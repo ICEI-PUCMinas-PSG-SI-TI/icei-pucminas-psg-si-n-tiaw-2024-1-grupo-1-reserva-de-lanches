@@ -4,12 +4,12 @@ Consutruir uma plataforma funcional que permita aos estudantes da PUC Minas polo
 
 ## Alunos integrantes da equipe
 
-* Samuel Araujo De oliveira
 * Emili Barbosa Silva
 * Gabriel Vitor Samuel Costa de Matos
-* Júlia Clara Madureira Silva 
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Humberto Faria Menezes Samora
+* Júlia Clara Madureira Silva
+* Samuel Araujo De oliveira
+* * Nome completo do aluno 6
 
 ## Professores responsáveis
 
