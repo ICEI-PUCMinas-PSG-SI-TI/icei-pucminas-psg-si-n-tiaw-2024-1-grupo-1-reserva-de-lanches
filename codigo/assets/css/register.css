@@ -1,0 +1,67 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --darker: #ad6d20;
+    --main: #d18b30;
+    --lighter: #f5a940;
+}
+
+main {
+    background-color: var(--black);
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    width: 800px;
+    height: 400px;
+    flex-direction: row;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.subContainer {
+    background-color: var(--main);
+    color: var(--black);
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+#images {
+    width: 60%;
+    overflow: hidden;
+    justify-content: center;
+}
+
+#images img {
+    bottom: 0%;
+}
+
+#form {
+    align-items: center;
+    width: 40%;
+}
+
+#login-buttons {
+    flex-direction: row;
+    width: 80%;
+    height: auto;
+}
+h2{
+    color: var(--black);
+}
+::placeholder {
+    color: black; /* Define a cor do placeholder como preto */
+}
+
+#register-form{
+    z-index: 5;
+}
+.hidden{
+    display: none;
+}

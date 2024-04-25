@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+        Fontes: 
+        Anton ( https://fonts.google.com/specimen/Anton?query=Anton )
+        Barlow ( https://fonts.google.com/?query=Barlow )
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!--END FONTES-->
+
+    <!--
+        Links Stylesheets
+    -->
+    <link rel="stylesheet" href="../css/globais.css">
+    <link rel="stylesheet" href="../css/register.css">
+
+    <title>Cadastro</title>
+
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container" id="login-form">
+
+            <div class="subContainer" id="images">
+
+                <img class="image" src="../midias/fotos/burguer.jpg" alt="">
+
+            </div>
+
+            <div class="subContainer" id="form">
+
+                <h2 class="tittle">LOGIN</h2>
+
+                
+                <input type="text" name="username" id="username-input" placeholder="Nome de usuário">
+
+                <input type="password" name="password" id="password-input" placeholder="Senha">
+                <a href="#" class="link">Esqueci minha senha</a>
+
+                <div class="subContainer" id="login-buttons">
+
+                    <button class="btn">Login</button>
+                    <button class="btn" onclick="showRegisterForm()">Registre-se</button>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="container hidden" id="register-form">
+
+            <div class="subContainer" id="images">
+
+                <img class="image" src="../midias/fotos/batatasFritas.jpg" alt="">
+
+            </div>
+
+            <div class="subContainer" id="form">
+
+                <h2 class="tittle" >CADATRO</h2>
+
+                <input type="text" name="name" id="name-input" placeholder="Digite seu nome:">
+
+                <input type="text" name="registration" id="registration-input" placeholder="Digite sua matrícula:">
+
+                <input type="text" name="username" id="username-input" placeholder="Digite seu e-mail:">
+
+                <input type="password" name="password" id="password-input" placeholder="Crie sua senha:">
+
+                <input type="password" name="password-confirm" id="passwordConfirm-input" placeholder="Confirme sua senha:">
+
+                <div class="subContainer" id="login-buttons">
+
+                    <button class="btn" onclick="showLoginForm()">Faça login</button>
+                    <button class="btn">Registrar-se</button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            function showRegisterForm() {
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('register-form').classList.remove('hidden');
+            }
+    
+            function showLoginForm() {
+                document.getElementById('register-form').classList.add('hidden');
+                document.getElementById('login-form').classList.remove('hidden');
+            }
+        </script>
+
+    </main>
+</body>
+
+</html>
