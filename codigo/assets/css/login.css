@@ -43,7 +43,7 @@ main {
 #float-form{
     display: flex;
     justify-content: space-around;
-    height: 40%;
+    height: 20%;
 }
 #float-form input{
     font-size: 12px;

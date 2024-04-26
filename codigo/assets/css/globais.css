@@ -14,7 +14,7 @@
         }
 /*
 Usar variáveis de cores em vez de códigos hexidecimais vai permitir alterar a paleta facilmente
---- NOMES PENSADOS POR PALETA MONOCROMÁTICA (LARANHA / BRANCO ) ---
+--- firtNameS PENSADOS POR PALETA MONOCROMÁTICA (LARANHA / BRANCO ) ---
 */
         :root {
             --black: #000;
@@ -105,5 +105,4 @@ PRÉ-DEFINIÇÕES DE CLASSES:
             background-color: transparent;
             outline: none;
             padding: 1px;
-            text-align: center;
         }

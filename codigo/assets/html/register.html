@@ -5,21 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--
-        Fontes: 
-        Anton ( https://fonts.google.com/specimen/Anton?query=Anton )
-        Barlow ( https://fonts.google.com/?query=Barlow )
-    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <!--END FONTES-->
+  
 
     <!--
         Links Stylesheets
@@ -30,83 +16,70 @@
     <title>Cadastro</title>
 
     <style>
-        
+        .hidden{
+            display: none;
+        }
+        .hidden p{
+            color: var(--black);
+            font-size: 11px;
+            font-weight: 700;
+        }
+         
     </style>
 </head>
 
 <body>
     <main>
-        <div class="container" id="login-form">
 
-            <div class="subContainer" id="images">
+        <div class="container" id="login">
 
-                <img class="image" src="../midias/fotos/burguer.jpg" alt="">
+           
 
-            </div>
+            <div class="subcontainer" id="form">
 
-            <div class="subContainer" id="form">
+                <div>
+                    <h2 class="tittle">CADASTRO</h2>
+                </div>
 
-                <h2 class="tittle">LOGIN</h2>
+                <div class="hidden" id="successfull-warning">
+                    <p class="text">Cadastrando usuário...</p>
+                </div>
+                <div class="hidden" id="password-warning">
+                    <p class="text">Uma senha forte contem pelo menos um(a): <br>Letra maiúscula, número, caracter especial</p>
+                </div>
 
-                
-                <input type="text" name="username" id="username-input" placeholder="Nome de usuário">
+                <div class="subcontainer" id="float-form">
+                    <input type="text" name="name" id="register-name" placeholder="Digite seu firtName:">
 
-                <input type="password" name="password" id="password-input" placeholder="Senha">
-                <a href="#" class="link">Esqueci minha senha</a>
+                    <input type="text" name="name" id="register-lastName" placeholder="Digite seu sobrefirtName:">
 
-                <div class="subContainer" id="login-buttons">
+                    <input type="text" name="enrollment" id="register-enrollment" placeholder="digite sua matrícula:" inputmode="numeric">
 
-                    <button class="btn">Login</button>
-                    <button class="btn" onclick="showRegisterForm()">Registre-se</button>
+                    <input type="text" name="username" id="register-username" placeholder="Digite seu e-mail:">
+
+                    <input type="password" name="password" id="register-password" placeholder="Crie sua senha:"> 
+                    
+                    <input type="password" name="confirmPassword" id="register-confirmPassword" placeholder="Confirme sua senha:">    
 
                 </div>
-            </div>
 
-        </div>
-
-
-        <div class="container hidden" id="register-form">
-
-            <div class="subContainer" id="images">
-
-                <img class="image" src="../midias/fotos/batatasFritas.jpg" alt="">
-
-            </div>
-
-            <div class="subContainer" id="form">
-
-                <h2 class="tittle" >CADATRO</h2>
-
-                <input type="text" name="name" id="name-input" placeholder="Digite seu nome:">
-
-                <input type="text" name="registration" id="registration-input" placeholder="Digite sua matrícula:">
-
-                <input type="text" name="username" id="username-input" placeholder="Digite seu e-mail:">
-
-                <input type="password" name="password" id="password-input" placeholder="Crie sua senha:">
-
-                <input type="password" name="password-confirm" id="passwordConfirm-input" placeholder="Confirme sua senha:">
-
-                <div class="subContainer" id="login-buttons">
-
-                    <button class="btn" onclick="showLoginForm()">Faça login</button>
-                    <button class="btn">Registrar-se</button>
-
+                <div>
+                    <button class="btn" id="cadastrar-button" onclick="validarCadastro()">Cadastrar</button>
                 </div>
-            </div>
 
+                <div>
+                    <p class="text">Já possui uma conta? 
+                        <a class="link" href="../html/login.html">Faça login</a>
+                    </p>
+                </div>
+
+            </div>
         </div>
 
-        <script>
-            function showRegisterForm() {
-                document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('register-form').classList.remove('hidden');
-            }
-    
-            function showLoginForm() {
-                document.getElementById('register-form').classList.add('hidden');
-                document.getElementById('login-form').classList.remove('hidden');
-            }
+        <script src="/codigo/assets/script/entities/User.js">
+
+            
+
         </script>
 
     </main>

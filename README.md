@@ -9,7 +9,7 @@ Consutruir uma plataforma funcional que permita aos estudantes da PUC Minas polo
 * Humberto Faria Menezes Samora
 * Júlia Clara Madureira Silva
 * Samuel Araujo De oliveira
-* * Nome completo do aluno 6
+* * firtName completo do aluno 6
 
 ## Professores responsáveis
 
