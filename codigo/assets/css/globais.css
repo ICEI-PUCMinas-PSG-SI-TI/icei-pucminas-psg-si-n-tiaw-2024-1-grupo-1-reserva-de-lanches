@@ -25,7 +25,6 @@ Usar variáveis de cores em vez de códigos hexidecimais vai permitir alterar a 
         }
 
         body {
-            background-color: var(--darker);
             overflow-x: hidden;
         }
 
@@ -33,7 +32,7 @@ Usar variáveis de cores em vez de códigos hexidecimais vai permitir alterar a 
             width: 100vw;
             height: 100svh;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
         }

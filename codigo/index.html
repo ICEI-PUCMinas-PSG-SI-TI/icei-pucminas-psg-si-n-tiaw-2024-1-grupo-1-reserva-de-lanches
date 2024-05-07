@@ -1,21 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/globais.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Reserva De Lanches</title>
 
+
     <style>
-        .btn{
-            width: 100px;
-            height: 50px;
+        :root {
+            --black: #000;
+            --white: #fff;
+            --darker: #ad6d20;
+            --main: #d18b30;
+            --lighter: #f5a940;
         }
+
+        .container{
+            flex-direction: column;
+        }
+
+        #container-mainInfo{
+            top: 0%;
+            background-color: green;
+            width: 70%;
+            height: 100%;
+            right: 0%;
+        }
+
+        #container-sideMenu{
+            top: 0%;
+            background-color: var(--black);
+            width: 30%;
+            height: 100%;
+            right: 0%;
+        }
+        
     </style>
 </head>
-<body>
-    This is our homepage
 
-    <bttton class="btn">button</bttton>
+<body>
+    <header>
+
+        <div class="container" id="header-container">
+            <div class="container-img-icone" id="container-logo">
+                <a href="#"><img class="img" id="logo-image" src="assets/midias/fotos/c_sharp_logo.png" alt=""></a>
+            </div>
+
+            <div class="container-img-icone" id="container-userAvatar">
+                <a href="#"><img class="img" id="avatar-image" src="assets/midias/fotos/avatar.jpg" alt=""></a>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <div class="container" id="container-mainInfo">
+
+        </div>
+
+        <div class="container" id="container-sideMenu">
+            
+        </div>
+    </main>
 
 </body>
+
 </html>

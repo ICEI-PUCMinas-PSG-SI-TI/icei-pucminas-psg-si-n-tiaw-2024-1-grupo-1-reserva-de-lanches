@@ -1,5 +1,4 @@
-const loginEmail = document.getElementById('login-username');
-const loginPassword = document.getElementById('login-password');
+
 const firtName = document.getElementById('register-name');
 const lastName = document.getElementById('register-lastName');
 const email = document.getElementById('register-username');
@@ -37,6 +36,9 @@ function validarCadastro() {
                 clearRegisterFields();
 
                 successWarning.style.display = 'block';
+
+                window.location.href = "../../assets/html/login.html";
+
             }
             else {
                 alert('enrollment already exist in our base')
@@ -52,35 +54,8 @@ function validarCadastro() {
     }
 }
 
-function validarLogin() {
-    let user = document.getElementById('login-username-input').value;
-    let userPassKey;
-    let confirm = false;
 
-    for (i = 0; i < clients.length; i++) {
-        if (clients[i]._email.toLowerCase() === user) {
-            userPassKey = clients[i].password;
-            confirm = true;
-            break;
-        }
-    }
 
-    if (confirm) {
-        let passwordInput = document.getElementById('login-password-input').value;
-
-        if (userPassKey === passwordInput.trim().toLowerCase()) {
-            alert('Login realizado!');
-        } else {
-            alert('Senha incorreta.');
-        }
-
-    }
-    else {
-        alert('Usuário não encontrado.');
-    }
-
-    clearFields();
-}
 
 
 function verificarDuplicidadeDeEmail(newUser) {

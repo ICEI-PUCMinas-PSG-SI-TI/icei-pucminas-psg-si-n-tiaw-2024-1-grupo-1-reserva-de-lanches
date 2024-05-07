@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   
+
 
     <link rel="stylesheet" href="../css/globais.css">
     <link rel="stylesheet" href="../css/login.css">
@@ -13,7 +13,7 @@
     <title>Document</title>
 
     <style>
-       
+
     </style>
 </head>
 
@@ -22,7 +22,7 @@
 
         <div class="container" id="login">
 
-           
+
 
             <div class="subcontainer" id="form">
 
@@ -33,15 +33,15 @@
                 <div class="subcontainer" id="float-form">
                     <input type="text" name="username" id="login-username" placeholder="Email">
 
-                    <input type="password" name="password" id="login-password" placeholder="Senha">    
+                    <input type="password" name="password" id="login-password" placeholder="Senha">
                 </div>
 
                 <div>
-                    <button class="btn">Logar</button>
+                    <button class="btn" id="login-button" onclick="validarLogin()">Logar</button>
                 </div>
 
                 <div>
-                    <p class="text" id="login-button" onclick="validarLogin()">Ainda não tem conta? 
+                    <p class="text">Ainda não tem conta?
                         <a class="link" href="../html/register.html">Cadastre-se</a>
                     </p>
                 </div>
@@ -50,6 +50,31 @@
         </div>
 
     </main>
+
+    <script>
+
+        const loginEmail = document.getElementById('login-username');
+        const loginPassword = document.getElementById('login-password');
+
+        const userList = [];
+
+        function validarLogin() {
+
+            let userList = JSON.parse(localStorage.getItem('userList')) || [];
+
+            for (let user of userList) {
+
+                if (user._email === loginEmail.value && user._password === loginPassword.value) {
+                    alert('Redirecionando...'); 
+                    window.location.href = "../../index.html";
+                    break;
+                } else {
+                    //alert('Não válidado'); 
+                }
+            }
+        }
+
+    </script>
 </body>
 
 </html>
