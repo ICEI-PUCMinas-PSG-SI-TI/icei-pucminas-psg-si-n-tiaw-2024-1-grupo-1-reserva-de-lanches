@@ -13,6 +13,14 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   } */
+
+  .tamanho{
+    width: 75%;
+  }
+
+  .tamanho-2{
+    width: 25%;
+  }
   
   h1 {
     text-align: center;
@@ -67,4 +75,16 @@ body {
   }
   .filters{
     text-align: center;
+  }
+
+  @media(max-width : 900px){
+    .tamanho{
+      width: 100%;
+    }
+    .tamanho-2{
+      width: 100%;
+    }
+    #menu-items{
+      flex-direction: column!important;
+    }
   }
