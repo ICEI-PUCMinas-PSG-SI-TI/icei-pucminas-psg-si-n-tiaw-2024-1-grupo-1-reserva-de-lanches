@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -25,303 +27,349 @@
             <div class="itens d-flex flex-column w-75">
                 <h2>Comidas</h2>
                 <div class="menu-category" id="Comidas">
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg"
                             alt="Sanduíche Natural">
                         <div class="menu-item-content">
                             <h2>Sanduíche Natural</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for="sanduiche-natural">Quantidade:</label>
-                            <select id="sanduiche-natural">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                            <p class="mb-0">Valor: R$6,50</p>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5 ">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Sanduiche Natural">Add to
+                                Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://th.bing.com/th/id/R.8195acd4602f690432d2219418cef287?rik=1DUVRcQMjv0K9g&riu=http%3a%2f%2freceitas.net%2fwp-content%2fuploads%2f2017%2f10%2fcoxinha-de-frango-1024x695.jpg&ehk=hNBqU7g3n9XkMWhlGLFgHln5G7kTWtZvPdLMTD3gY0s%3d&risl=&pid=ImgRaw&r=0"
                             alt="Coxinha">
                         <div class="menu-item-content">
                             <h2>Coxinha</h2>
                             <p>Valor: R$6,50</p>
-                            <label for="coxinha">Quantidade:</label>
-                            <select id="coxinha">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Coxinha">Add to Card</button>
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://2.bp.blogspot.com/-hEHgTOrhKSk/T41V5A6v1nI/AAAAAAAAACk/2VECbSy0__M/s1600/empada.jpg"
                             alt="Empada">
                         <div class="menu-item-content">
                             <h2>Empada</h2>
                             <p>Valor: R$6,50</p>
-                            <label for="empada">Quantidade:</label>
-                            <select id="empada">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Empada">Add to Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRhbL3UnDr7fe6-A6_msYI-Qo8UtHtO1xrQ&s"
                             alt="Pão de Queijo">
                         <div class="menu-item-content">
                             <h2>Pão de Queijo</h2>
                             <p>Valor: R$3,00</p>
-                            <label for="pao-de-queijo">Quantidade:</label>
-                            <select id="pao-de-queijo">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="3.00" nome="Pão de Queijo">Add to
+                                Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbaV-12-rJkimIgGe20CPLUxxAoGGNcrRAYQ&s"
                             alt="Pão de Queijo Recheado">
                         <div class="menu-item-content">
                             <h2>Pão de Queijo Recheado</h2>
                             <p>Valor: R$5,00</p>
-                            <label for="pao-de-queijo-recheado">Quantidade:</label>
-                            <select id="pao-de-queijo-recheado">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="5.00" nome="Pão de Queijo Recheado">Add
+                                to Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7cmen4IT5oFYEmneiSOE8drNZZsS7mhrBMA&s"
                             alt="Pastel Assado">
                         <div class="menu-item-content">
                             <h2>Pastel Assado</h2>
                             <p>Valor: R$6,50</p>
-                            <label for="pastel-assado">Quantidade:</label>
-                            <select id="pastel-assado">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Pastel Assado">Add to
+                                Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://i.ytimg.com/vi/-STkr9JS6pA/mqdefault.jpg" alt="Hamburgão">
                         <div class="menu-item-content">
                             <h2>Hamburgão</h2>
                             <p>Valor: R$8,00</p>
-                            <label for="hamburgao">Quantidade:</label>
-                            <select id="hamburgao">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="8.00" nome="Hamburgão">Add to
+                                Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item d-flex">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VcQ7tDl4pJIFLC942txDBjoZyKBgQ7PRLHSZjgA7ZmahUjorEwAgjI-TAOEDvMOlLRQ&usqp=CAU"
                             alt="Enrolado de Presunto e Queijo">
                         <div class="menu-item-content">
                             <h2>Enrolado de Presunto e Queijo</h2>
                             <p>Valor: R$6,50</p>
-                            <label for="enrolado-presunto-queijo">Quantidade:</label>
-                            <select id="enrolado-presunto-queijo">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50"
+                                nome="Enrolado de Presunto e Queijo">Add to Card</button>
+
                         </div>
                     </div>
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKn_3-QE63FNtqQuejcM5artPx_UJ1YaI7kUmf6eBFsQ0O4p5c3IbaU_XEKg8Z9CoV5k&usqp=CAU"
-                            alt="Kibe">
+                    <div class="menu-item d-flex">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKn_3-QE63FNtqQuejcM5artPx_UJ1YaKeA&s"
+                            alt="Enrolado de Salsicha">
                         <div class="menu-item-content">
-                            <h2>Kibe</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for="kibe">Quantidade:</label>
-                            <select id="kibe">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                            <h2>Enrolado de Salsicha</h2>
+                            <p>Valor: R$6,50 </p>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Enrolado de Salsicha">Add to
+                                Card</button>
+
+                        </div>
+                    </div>
+                    <div class="menu-item d-flex">
+                        <img src="https://www.perdigao.com.br/assets/_images/654bfd759bf743d8e6e420cd097f94745da24bc7.png"
+                            alt="Hambúrguer">
+                        <div class="menu-item-content">
+                            <h2>Hambúrguer</h2>
+                            <p>Valor: R$12,00 </p>
+
+                        </div>
+                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                            <button type="button" class="btn btn-dark addCarrinho"  valor="12.00" nome="Hambúrguer">Add to
+                                Card</button>
+
                         </div>
                     </div>
                 </div>
-            
-           
+
+
                 <h2>Bebidas</h2>
                 <div class="menu-category" id="Bebidas">
-                    <div class="menu-item">
-                        <img src="https://www.vakinha.com.br/uploads/vakinha/image/198893/images/larger_ba23067e183a774f4cb08f79cc385b163b6d6bc0.jpg?1507406784"
-                            alt="Suco Natural">
-                        <div class="menu-item-content">
-                            <h2>Suco Natural</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for="suco-natural">Quantidade:</label>
-                            <select id="suco-natural">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                    
+                        <div class="menu-item d-flex">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmycCQRo4JsPvVyFKqQBk0pmD9LWsP1pKu9w&s"
+                                alt="Refrigerantes">
+                            <div class="menu-item-content">
+                                <h2>Refrigerantes</h2>
+                                <p>Valor: R$6,00 </p>
+                               
+                            </div>
+                            <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                                <button type="button" class="btn btn-dark addCarrinho"  valor="6.00"
+                                    nome="Refrigerantes">Add to Card</button>
+    
+                            </div>
                         </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://th.bing.com/th/id/OIP.oWLOc9kCF_kcImbFe1qP_AHaE6?pid=ImgDet&rs=1" alt="Refrigerante">
-                        <div class="menu-item-content">
-                            <h2>Refrigerante</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for="refrigerante">Quantidade:</label>
-                            <select id="refrigerante">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://estagiosp.sesisenaisp.org.br/uploads/pictures/file/51/WhatsApp_Image_2020-07-28_at_08.54.40_1595941060.jpeg"
-                            alt="Água Mineral">
-                        <div class="menu-item-content">
-                            <h2>Água Mineral</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for="agua-mineral">Quantidade:</label>
-                            <select id="agua-mineral">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://www.gkpb.com.br/wp-content/uploads/2020/05/mcdonalds-milkshake-o-boticario.jpg"
-                            alt="Milkshake">
-                        <div class="menu-item-content">
-                            <h2>Milkshake</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for="milkshake">Quantidade:</label>
-                            <select id="milkshake">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://th.bing.com/th/id/OIP.G1xtBBq3HTEPRGh3PPr8WQHaGF?pid=ImgDet&rs=1" alt="Café">
-                        <div class="menu-item-content">
-                            <h2>Café</h2>
-                            <p>Valor: R$3,00</p>
-                            <label for="cafe">Quantidade:</label>
-                            <select id="cafe">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://www.cafepoint.com.br/upload/resize/800/450/materias/2014/11/como_preparar_um_cappuccino_perfeito_para_o_inverno.jpg"
-                            alt="Capuccino">
-                        <div class="menu-item-content">
-                            <h2>Capuccino</h2>
-                            <p>Valor: R$3,00</p>
-                            <label for="capuccino">Quantidade:</label>
-                            <select id="capuccino">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <!-- Seção do carrinho -->
-            <div class="cart d-flex flex-column w-25 ps-3">
-                <h2>Carrinho</h2>
-                <p id="order-summary"></p>
-                <p id="total-price">Total: R$0.00</p>
-                <button class="btn btn-primary meu-botao" type="button" onclick="showSummary()">Visualizar Pedido</button>
 
-            </div>
-        </div>
+                            <div class="menu-item d-flex">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0-69gl2VtvQSUA9AouJHYi1uWL7YNL527Q&s"
+                                    alt="Sucos">
+                                <div class="menu-item-content">
+                                    <h2>Sucos</h2>
+                                    <p>Valor: R$6,50 </p>
 
+                                </div>
+
+                                <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50"
+                                        nome="Sucos">Add to Card</button>
         
-    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item d-flex">
+                                <img src="https://www.guiadasemana.com.br/contentFiles/image/2019/05/FEA/galeria/52849_w840h525_1558996048shutterstock-1237794556.jpg"
+                                    alt="Vitaminas">
+                                <div class="menu-item-content">
+                                    <h2>Vitaminas-Açaí</h2>
+                                    <p>Valor: R$7,50 </p>
+
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="7.50"
+                                        nome="Vitaminas de Açai">Add to Card</button>
+        
+                                </div>
+                            </div>
+                                <div class="menu-item d-flex">
+                                    <img src="https://abir.org.br/abir/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-30-at-15.26.58.jpeg"
+                                        alt="Água">
+                                    <div class="menu-item-content">
+                                        <h2>Água</h2>
+                                        <p>Valor: R$4,50 </p>
+
+                                    </div>
+                                    <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                                        <button type="button" class="btn btn-dark addCarrinho"  valor="4.50"
+                                            nome="Água">Add to Card</button>
+            
+                                    </div>
+                                </div>
+                                    <div class="menu-item d-flex">
+                                        <img src="https://th.bing.com/th?id=OSK.HEROdcF23LjpLGIEo4Lk0MYDJrEZ9euas7qCH_jaxJniP-4&w=384&h=228&c=13&rs=2&o=6&pid=SANGAM"
+                                            alt="Energetico">
+                                        <div class="menu-item-content">
+                                            <h2>Energetico</h2>
+                                            <p>Valor: R$12,00 </p>
+
+                                        </div>
+                                        <div class="d-flex align-itens-center align-self-center ps-3 ms-auto me-5">
+                                            <button type="button" class="btn btn-dark addCarrinho"  valor="12.00"
+                                                nome="Energético">Add to Card</button>
+                
+                                        </div>
+                                    </div>
+
+                                </div>
+                           
+                           
+                        </div>
+                <!-- Seção do carrinho -->
+                <div class="cart d-flex flex-column w-25 ps-3">
+                    <div class="sticky-top">
+                        <h2>Carrinho</h2>
+                        <div id="order-summary"></div>
+                        <p id="total-price">Total: R$0.00</p>
+                        <button class="btn btn-dark meu-botao w-100" type="button" onclick="mostrarPedido()">
+                            Salvar Pedido
+                        </button>
+                    </div>
+
+                </div>
+
+                    </div>
 
 
 
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                            crossorigin="anonymous"></script>
-                        <script>
-                            function calculateTotal() {
-                                let total = 0;
-                                const items = document.querySelectorAll('.menu-item-content');
-                                items.forEach(item => {
-                                    const price = parseFloat(item.querySelector('p').textContent.replace(
-                                        'Valor: R$', '').replace(',','.').trim());
-                                    const quantity = parseInt(item.querySelector('select').value);
-                                    total += price * quantity;
-                                    // console.log({
-                                    //     price,
-                                    //     quantity,
-                                    //     total
-                                    // })
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                        crossorigin="anonymous"></script>
+                    <script>
+                        //cria o carrinho
+                        var carrinho = [];
+                        $(document).ready(function() {
+                            
+                            var quantidade = 1;
+                            var html = "";
+                            var total = 0;
+
+                            //remove um item do carrinho
+                            function removeItem(itemNome) {
+                                total = 0;
+                                html = '';
+                                carrinho.forEach((compra, index) => {
+                                    if (compra.nome === itemNome) {
+                                        compra.quantidade = compra.quantidade - 1;
+                                        if(compra.quantidade == 0){
+                                            carrinho.splice(index, 1);
+                                        }
+                                    } 
+                                   
+
                                 });
-                                
-                                return total;
+                                carrinho.forEach((compra, index)=>{
+                                    html += `<div class='shadow p-2 mb-1 bg-white rounded d-flex align-items-center text-center'>
+                                                <p class='m-0'>${compra.nome}: ${compra.quantidade}x</p>
+                                                <button class='btn btn-danger p-1 px-2 ms-auto remove-item' data-item="${index}">
+                                                    <i class="bi bi-dash"></i>
+                                                </button>
+                                            </div>`;
+                                    total += compra.preco
+                                })
+
+                                $('#order-summary').html(html);
+                                $('#total-price').text(`Total: R$${total.toFixed(2)}`);
                             }
 
-                            function showSummary() {
-                                const summary = document.getElementById('order-summary');
-                                let orderSummary = "Resumo do Pedido:\n";
-                                const items = document.querySelectorAll('.menu-item-content');
-                                let html = ""
-                                items.forEach(item => {
-                                    const itemName = item.querySelector('h2').textContent;
-                                    const quantity = parseInt(item.querySelector('select').value);
-                                    if (quantity > 0) {
-                                        orderSummary += `${itemName}: ${quantity}x\n`;
+                            //adiciona itens a carrinho
+                            $('.addCarrinho').click(function() {
+                                let nome = $(this).attr('nome');
+                                let preco = parseFloat($(this).attr('valor'));
+
+                                let itemExiste = false;
+                                carrinho.forEach(compra => {
+                                    if (compra.nome === nome) {
+                                        compra.quantidade += 1;
+                                        itemExiste = true;
                                     }
                                 });
-                                summary.textContent = orderSummary;
 
-                                const totalPrice = calculateTotal();
-                                document.getElementById('total-price').textContent = `Total: R$${totalPrice.toFixed(2)}`;
-                            }
+                                if (!itemExiste) {
+                                    carrinho.push({
+                                        nome: nome,
+                                        preco: preco,
+                                        quantidade: quantidade
+                                    });
+                                }
 
-                            // Função para filtrar os itens por categoria
-                            function filterItems(category) {
-                                const categories = document.querySelectorAll('.menu-category');
-                                categories.forEach(cat => {
-                                    if (cat.id === category) {
-                                        cat.style.display = 'block';
-                                    } else {
-                                        cat.style.display = 'none';
-                                    }
+                                total = 0;
+                                html = '';
+                                carrinho.forEach((compra, index) => {
+                                    total += compra.preco * compra.quantidade;
+                                    html += `<div class='shadow p-2 mb-1 bg-white rounded d-flex align-items-center text-center'>
+                                                <p class='m-0'>${compra.nome}: ${compra.quantidade}x</p>
+                                                <button class='btn btn-danger p-1 px-2 ms-auto remove-item' data-item="${index}">
+                                                    <i class="bi bi-dash"></i>
+                                                </button>
+                                            </div>`;
                                 });
+
+                                $('#order-summary').html(html);
+                                $('#total-price').text(`Total: R$${total.toFixed(2)}`);
+                            });
+
+                            // Evento delegado para lidar com cliques nos botões de remoção
+                            $('#order-summary').on('click', '.remove-item', function() {
+                                let index = $(this).data('item');
+                                let nomeItem = carrinho[index].nome;
+                                removeItem(nomeItem);
+                            });
+
+                            
+                        });
+
+                        //salva o pedido no localstorage
+                        function mostrarPedido(){
+                                console.log(carrinho)
+                                carrinho = JSON.stringify(carrinho)
+                                localStorage.setItem("carrinho",carrinho)
+                                carrinho = JSON.parse(carrinho)
                             }
-                        </script>
+
+                        // Função para filtrar os itens por categoria
+                        function filterItems(category) {
+                            const categories = document.querySelectorAll('.menu-category');
+                            categories.forEach(cat => {
+                                if (cat.id === category) {
+                                    cat.style.display = 'block';
+                                } else {
+                                    cat.style.display = 'none';
+                                }
+                            });
+                        }
+                    </script>
 
 </body>
 
