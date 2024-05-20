@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <script src="../script/inserirEditar.js"></script>
+    <title>Controle de Produtos</title>
+</head>
+
+<body onload="initInsertPage()">
+
+    <div class="container">
+
+        <h1><span id="cadastrar">Cadastrar Produto</span></h1>
+
+        <div class="menu-item" id="editProduct">
+
+            <img src="#" alt="Produto" id="imgProduto">
+
+            <div class="menu-item-content" style="max-width: 10%;">
+                <label for="tipo" class="label-cadastro">Tipo:</label>
+                <label for="descricao" class="label-cadastro">Descrição:</label>
+                <label for="preco" class="label-cadastro">Preço:</label>
+                <label for="preco" class="label-cadastro">Estoque:</label>
+            </div>
+
+            <div class="menu-item-content" style="max-width: 25%; min-width: 15%;">
+                <select name="select" class="input-cadastro" id="tipo">
+                    <option value="Comidas" selected>Comidas</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Doces">Doces</option>
+                </select>
+                <input type="text" id="descricao" class="input-cadastro" placeholder="Descrição do produto">
+                <input type="text" id="preco" class="input-cadastro" placeholder="0,00">
+                <input type="text" id="estoque" class="input-cadastro" placeholder="000">
+            </div>
+
+            <div class="menu-item-content">
+                <button type="button" class="menu-item-button-confirmar" id="confirmar">Confimar</button>
+                <button type="button" class="menu-item-button-cancelar" id="cancelar">Cancelar</button>
+            </div>
+
+        </div>
+        
+        <div class="menu-item">
+            <p>
+                <span id="spanImg">Escolher imagem:</span>
+                <input class="menu-item-button-file" type="file" id="loadImage" accept="image/*" />
+            </p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

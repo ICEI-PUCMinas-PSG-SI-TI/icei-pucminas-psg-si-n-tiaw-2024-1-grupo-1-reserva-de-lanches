@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    background-color: #B55904;
+
+}
+
+h2 {
+    color: #F47906;
+}
+
+h3 {
+    text-align: center;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    vertical-align: middle;
+}
+
+.menu-item img {
+    float: left;
+    width: 150px;
+    height: 100%;
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menu-item span {
+    margin-left: 10px;
+}
+
+.menu-item-content {
+    padding: 20px;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 70%;
+}
+
+.menu-item-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.menu-item-content p {
+    color: #666;
+}
+
+.menu-item select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.menu-item-button-incluir {
+    width: 100%;
+    text-align: center;
+    color: #F47906;
+    margin: 5px;
+    padding: 10px;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.menu-item-button-editar {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    /* display: block; */
+}
+
+.menu-item-button-confirmar {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    /* display: block; */ 
+}
+
+.menu-item-button-cancelar {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    /* display: block; */
+    color: red;
+}
+
+.menu-item-button-excluir {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    /* display: block; */
+    color: red;
+}
+
+.menu-item-button-file {
+    color: transparent;
+    max-width: 120px;
+    transform: scale(1, 1.1);
+    /* display: block; */ 
+}
+
+.label-cadastro {
+    padding: 3px;
+    display: block;
+}
+
+.input-cadastro {
+    margin-top: 5px;
+    width: 100%;
+    display: block;
+}
