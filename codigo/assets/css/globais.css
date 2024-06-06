@@ -1,107 +1,198 @@
-*,
-        *::before,
-        **::after {
-            box-sizing: border-box;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-        * {
-            padding: 0;
-            margin: 0;
-            font-size: clamp(14px, 16px, 40px); 
-            color: var(--white);
-            box-sizing: border-box;
-            z-index: 1;
-        }
+*,
+*::before,
+**::after {
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-size: clamp(14px, 16px, 40px);
+    box-sizing: border-box;
+}
+
 /*
 Usar variáveis de cores em vez de códigos hexidecimais vai permitir alterar a paleta facilmente
---- firtNameS PENSADOS POR PALETA MONOCROMÁTICA (LARANHA / BRANCO ) ---
+--- PENSADAS PARA PALETA MONOCROMÁTICA (LARANHA / BRANCO ) ---
 */
-        :root {
-            --black: #000;
-            --white: #fff;
-            --darker: #ad6d20;
-            --main: #d18b30;
-            --lighter: #f5a940;
-        }
+:root {
+    --black: #000;
+    --white: #fff;
+    --darker: #ad6d20;
+    --main: #d18b30;
+    --lighter: #f5a940;
+}
 
-        body {
-            overflow-x: hidden;
-        }
+body {
+    overflow-x: hidden;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
 
-        main {
-            width: 100vw;
-            height: 100svh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
+main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        /*
+a {
+    text-decoration: none;
+    color: var(--black);
+
+    &:hover {
+        color: var(--lighter);
+    }
+}
+
+/*
 
 PRÉ-DEFINIÇÕES DE CLASSES: 
 
 */
-        .container {
-            z-index: 1;
-            position: relative;
-            display: flex;
-        }
+.container {
+    position: relative;
+    display: flex;
+}
 
-        .btn {
-            width: 100px;
-            height: 40px;
-            font-size: 80%;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-            background-color: var(--black);
-            color: var(--white);
-            transition: box-shadow 0.3s ease;
+.btn {
+    display: grid;
+    place-items: center;
+    width: 100px;
+    height: 40px;
+    font-size: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--black);
+    color: var(--white);
+    transition: box-shadow 0.3s ease;
 
-            &:hover {
-                color: var(--lighter);
-            }
-        }
+    &:hover {
+        color: var(--lighter);
+    }
+}
 
-        .image {
-            width: 100%;
-            height: auto;
-        }
+.image {
+    width: 100%;
+    height: auto;
+}
 
-        .logo {
-            width: 20px;
-            height: auto;
-        }
-        
-        .tittle {
-            font-family: "Anton", sans-serif;
-            letter-spacing: 2px;
-            font-size: clamp(20px, 2vw, 50px);
-        }
+.logo {
+    width: 20px;
+    height: auto;
+}
 
-        .text {
-            font-family: "Barlow", sans-serif;
-            text-align: justify;
-            font-size: clamp(12px, 1.0vw, 22px);
-        }
+.tittle {
+    font-family: "Anton", sans-serif;
+    letter-spacing: 2px;
+    font-size: clamp(20px, 2vw, 50px);
+}
 
-        .link {
-            color: var(--black);
-            text-decoration: none;
-            transition: 0.3s;
-        }
+.text {
+    font-family: "Barlow", sans-serif;
+    text-align: justify;
+    font-size: clamp(12px, 1.0vw, 22px);
+}
 
-        .link:hover {
-            opacity: 1;
-            color: var(--white);
-            text-decoration: dashed;
-        }
+.link {
+    color: var(--black);
+    text-decoration: none;
+    transition: 0.3s;
+}
 
-        input{
-            border: none;
-            border-bottom: 1px solid black;
-            background-color: transparent;
-            outline: none;
-            padding: 1px;
-        }
+.link:hover {
+    opacity: 1;
+    color: var(--white);
+    text-decoration: dashed;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    outline: none;
+    padding: 1px;
+}
+
+.hidden{
+    display: none;
+}
+
+/*
+        .roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+        */

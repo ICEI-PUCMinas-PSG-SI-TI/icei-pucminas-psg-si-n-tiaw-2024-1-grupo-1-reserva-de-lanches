@@ -1,0 +1,60 @@
+.tittle {
+    font-size: clamp(.8rem, 2.5vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--white);
+    width: 40%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url(/codigo/assets/midias/fotos/burguer.jpg);
+    width: 100%;
+    height: 5vh;
+    font-size: (.5rem, 1.5vw, 2rem);
+    padding: 0% 10% 0% 1%;
+    color: var(--white);
+    overflow: hidden;
+
+    .nav-list {
+        list-style: none;
+        display: flex;
+        width: 30%;
+    
+        li {
+            letter-spacing: 1px;
+            margin-right: 5%;
+    
+            &:hover {
+                cursor: pointer;
+                color: var(--darker);
+            }
+        }
+    }
+
+}
+
+main {
+    background: rgb(97, 85, 65);
+    background-size: cover;
+    height: 95vh;
+}
+
+.container {
+    margin: 2%;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 80%;
+    background-color: var(--darker);
+    padding: 10px;
+    font-size: clamp(5px, 100%, 24px);
+    /*box-shadow: [offset-x] [offset-y] [blur-radius] [spread-radius] [color];*/
+    box-shadow: 5px 5px 10px 0px var(--black);
+    gap: 10px;
+
+    .btn {
+        align-self: flex-end;
+    }
+}
