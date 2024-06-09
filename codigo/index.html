@@ -1,309 +1,426 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu da Lanchonete</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Menu da Lanchonete</h1>
+    <!DOCTYPE html>
+    <html lang="en">
 
-        <!-- Botões de filtro -->
-        <div class="filters">
-            <button onclick="filterItems('Comidas')">Comidas</button>
-            <button onclick="filterItems('Bebidas')">Bebidas</button>
-            
-        </div>
-<div></div>
-        <!-- Itens do menu -->
-        <div id="menu-items">
-            <h2>Comidas</h2>
-            <div class="menu-category" id="Comidas">
-                <div class="menu-item">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg" alt="Sanduíche Natural">
-                    <div class="menu-item-content">
-                        <h2>Sanduíche Natural</h2>
-                        <p>Valor: R$6,50</p>
-                        <label for="sanduiche-natural">Quantidade:</label>
-                        <select id="sanduiche-natural">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://th.bing.com/th/id/R.8195acd4602f690432d2219418cef287?rik=1DUVRcQMjv0K9g&riu=http%3a%2f%2freceitas.net%2fwp-content%2fuploads%2f2017%2f10%2fcoxinha-de-frango-1024x695.jpg&ehk=hNBqU7g3n9XkMWhlGLFgHln5G7kTWtZvPdLMTD3gY0s%3d&risl=&pid=ImgRaw&r=0" alt="Sanduíche Natural">
-                        <div class="menu-item-content">
-                            <h2>Coxinha</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for=">Coxinha">Quantidade:</label>
-                            <select id=">Coxinha">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://2.bp.blogspot.com/-hEHgTOrhKSk/T41V5A6v1nI/AAAAAAAAACk/2VECbSy0__M/s1600/empada.jpg" alt="Empada">
-                        <div class="menu-item-content">
-                            <h2>Empada</h2>
-                            <p>Valor: R$6,50</p>
-                            <label for=">Empada">Quantidade:</label>
-                            <select id=">Empada">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRhbL3UnDr7fe6-A6_msYI-Qo8UtHtO1xrQ&s" alt="Pão de Queijo">
-                          <div class="menu-item-content">
-                              <h2>Pão de Queijo</h2>
-                               <p>Valor: R$3,00</p>
-                              <label for="Pão de Queijo">Quantidade:</label>
-                              <select id="Pão de Queijo">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu da Lanchonete</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
 
-                              </select>
-                          </div>
-                      </div>
-                    <div class="menu-item">
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbaV-12-rJkimIgGe20CPLUxxAoGGNcrRAYQ&s" alt="Pão de Queijo Recheado">
-                          <div class="menu-item-content">
-                              <h2>Pão de Queijo Recheado</h2>
-                              <p>Valor: R$5,00 </p>
-                              <label for="Pão de Queijo Recheado">Quantidade:</label>
-                              <select id="Pão de Queijo Recheado">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
+    </head>
 
-                              </select>
-                          </div>
-                      </div>
-                    <div class="menu-item">
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7cmen4IT5oFYEmneiSOE8drNZZsS7mhrBMA&s" alt="Pastel Assado">
-                          <div class="menu-item-content">
-                              <h2>Pastel Assado</h2>
-                              <p>Valor: R$6,50 </p>
-                              <label for="Pastel Assado">Quantidade:</label>
-                              <select id="Pastel Assado">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
+    <body>
+        <div class="container">
+            <h1>Menu da Lanchonete</h1>
 
-                              </select>
-                          </div>
-                      </div>
-                    <div class="menu-item">
-                          <img src="https://i.ytimg.com/vi/-STkr9JS6pA/mqdefault.jpg" alt="Hamburgão">
-                          <div class="menu-item-content">
-                              <h2>Hamburgão</h2>
-                              <p>Valor: R$8,00 </p>
-                              <label for="Hamburgão">Quantidade:</label>
-                              <select id="Hamburgão">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-
-                              </select>
-                          </div>
-                      </div>
-                    <div class="menu-item">
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VcQ7tDl4pJIFLC942txDBjoZyKBgQ7PRLHSZjgA7ZmahUjorEwAgjI-TAOEDvMOlLRQ&usqp=CAU" alt="Enrolado de Presunto e Queijo">
-                          <div class="menu-item-content">
-                              <h2>Enrolado de Presunto e Queijo</h2>
-                              <p>Valor: R$6,50 </p>
-                              <label for="Enrolado de Presunto e Queijo">Quantidade:</label>
-                              <select id="Enrolado de Presunto e Queijo">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-
-                              </select>
-                          </div>
-                      </div>
-                    <div class="menu-item">
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKn_3-QE63FNtqQuejcM5artPx_UJ1YaKeA&s" alt="Enrolado de Salsicha">
-                          <div class="menu-item-content">
-                              <h2>Enrolado de Salsicha</h2>
-                              <p>Valor: R$6,50 </p>
-                              <label for="Enrolado de Salsicha">Quantidade:</label>
-                              <select id="Enrolado de Salsicha">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-
-                              </select>
-                          </div>
-                      </div>
-                    
-
-
-
-                    <div class="menu-item">
-                          <img src="https://www.perdigao.com.br/assets/_images/654bfd759bf743d8e6e420cd097f94745da24bc7.png" alt="Hambúrguer">
-                          <div class="menu-item-content">
-                              <h2>Hambúrguer</h2>
-                              <p>Valor: R$12,00 </p>
-                              <label for="Hambúrguer">Quantidade:</label>
-                              <select id="Hambúrguer">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-
-                              </select>
-                          </div>
-                      </div>
-                    
-                </div>
+            <!-- Botões de filtro -->
+            <div class="filters">
+                <button onclick="filterItems('Comidas')">Comidas</button>
+                <button onclick="filterItems('Bebidas')">Bebidas</button>
             </div>
+
+            <!-- Itens do menu -->
+            <div id="menu-items" class="d-flex mb-5">
+                <div class="itens d-flex flex-column tamanho">
+                    <h2>Comidas</h2>
+                    <div class="menu-category" id="Comidas">
+                        <div class="menu-item d-flex">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg"
+                                alt="Sanduíche Natural">
+                            <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                    <h2>Sanduíche Natural</h2>
+                                    <p class="mb-0">Valor: R$6,50</p>
+        
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5 ">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Sanduiche Natural">Add to
+                                        Cart</button>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://th.bing.com/th/id/R.8195acd4602f690432d2219418cef287?rik=1DUVRcQMjv0K9g&riu=http%3a%2f%2freceitas.net%2fwp-content%2fuploads%2f2017%2f10%2fcoxinha-de-frango-1024x695.jpg&ehk=hNBqU7g3n9XkMWhlGLFgHln5G7kTWtZvPdLMTD3gY0s%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Coxinha">
+                        <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                    <h2>Coxinha</h2>
+                                    <p>Valor: R$6,50</p>
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Coxinha">Add to Cart</button>
+                                </div>
+                        </div>
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://2.bp.blogspot.com/-hEHgTOrhKSk/T41V5A6v1nI/AAAAAAAAACk/2VECbSy0__M/s1600/empada.jpg"
+                                alt="Empada">
+                            <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                    <h2>Empada</h2>
+                                    <p>Valor: R$6,50</p>
+        
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Empada">Add to Cart</button>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRhbL3UnDr7fe6-A6_msYI-Qo8UtHtO1xrQ&s"
+                                alt="Pão de Queijo">
+                        <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                    <h2>Pão de Queijo</h2>
+                                    <p>Valor: R$3,00</p>
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="3.00" nome="Pão de Queijo">Add to
+                                        Cart</button>
+
+                                </div>
+                        </div>
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbaV-12-rJkimIgGe20CPLUxxAoGGNcrRAYQ&s"
+                                alt="Pão de Queijo Recheado">
+                            <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                    <h2>Pão de Queijo Recheado</h2>
+                                    <p>Valor: R$5,00</p>
+        
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="5.00" nome="Pão de Queijo Recheado">Add
+                                        to Cart</button>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7cmen4IT5oFYEmneiSOE8drNZZsS7mhrBMA&s"
+                                alt="Pastel Assado">
+                                <div class="d-flex flex-wrap justify-content-between w-100">
+                                    <div class="menu-item-content">
+                                        <h2>Pastel Assado</h2>
+                                        <p>Valor: R$6,50</p>
             
-
-            <h2>Bebidas</h2>
-
-              <div class="menu-item">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmycCQRo4JsPvVyFKqQBk0pmD9LWsP1pKu9w&s" alt="Refrigerantes">
-              <div class="menu-item-content">
-                  <h2>Refrigerantes</h2>
-                  <p>Valor: R$6,00 </p>
-                  <label for="Refrigerante">Quantidade:</label>
-                  <select id="Refrigerante">
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-
-                  </select>
-              </div>
-                <div class="menu-item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0-69gl2VtvQSUA9AouJHYi1uWL7YNL527Q&s" alt="Sucos">
-                <div class="menu-item-content">
-                    <h2>Sucos</h2>
-                    <p>Valor: R$6,50 </p>
-                    <label for="Sucos">Quantidade:</label>
-                    <select id="Sucos">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-
-                    </select>
-                </div>
-
+                                    </div>
+                                    <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                        <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Pastel Assado">Add to
+                                            Cart</button>
+            
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://i.ytimg.com/vi/-STkr9JS6pA/mqdefault.jpg" alt="Hamburgão">
+                            <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                    <h2>Hamburgão</h2>
+                                    <p>Valor: R$8,00</p>
+        
+                                </div>
+                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                    <button type="button" class="btn btn-dark addCarrinho"  valor="8.00" nome="Hamburgão">Add to
+                                        Cart</button>
+        
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VcQ7tDl4pJIFLC942txDBjoZyKBgQ7PRLHSZjgA7ZmahUjorEwAgjI-TAOEDvMOlLRQ&usqp=CAU"
+                                alt="Enrolado de Presunto e Queijo">
+                                <div class="d-flex flex-wrap justify-content-between w-100">
+                                    <div class="menu-item-content">
+                                        <h2>Enrolado de Presunto e Queijo</h2>
+                                        <p>Valor: R$6,50</p>
+            
+                                    </div>
+                                    <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                        <button type="button" class="btn btn-dark addCarrinho"  valor="6.50"
+                                            nome="Enrolado de Presunto e Queijo">Add to Cart</button>
+            
+                                    </div>
+                                </div>
+                        
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKn_3-QE63FNtqQuejcM5artPx_UJ1YaKeA&s"
+                                alt="Enrolado de Salsicha">
+                                <div class="d-flex flex-wrap justify-content-between w-100">
+                                    <div class="menu-item-content">
+                                        <h2>Enrolado de Salsicha</h2>
+                                        <p>Valor: R$6,50 </p>
+            
+                                    </div>
+                                    <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                        <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Enrolado de Salsicha">Add to
+                                            Cart</button>
+            
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        <div class="menu-item d-flex">
+                            <img src="https://www.perdigao.com.br/assets/_images/654bfd759bf743d8e6e420cd097f94745da24bc7.png"
+                                alt="Hambúrguer">
+                                <div class="d-flex flex-wrap justify-content-between w-100">
+                                    <div class="menu-item-content">
+                                        <h2>Hambúrguer</h2>
+                                        <p>Valor: R$12,00 </p>
+            
+                                    </div>
+                                    <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                        <button type="button" class="btn btn-dark addCarrinho"  valor="12.00" nome="Hambúrguer">Add to
+                                            Cart</button>
+            
+                                    </div>
+                                </div>
+                        
+                        </div>
                     </div>
-                    <div class="menu-item">
-                    <img src="https://www.guiadasemana.com.br/contentFiles/image/2019/05/FEA/galeria/52849_w840h525_1558996048shutterstock-1237794556.jpg" alt="Vitaminas">
-                    <div class="menu-item-content">
-                        <h2>Vitaminas-Açaí</h2>
-                        <p>Valor: R$7,50 </p>
-                        <label for="Vitaminas">Quantidade:</label>
-                        <select id="Vitaminas">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
 
-                        </select>
-                        </div>
-                        <div class="menu-item">
-                        <img src="https://abir.org.br/abir/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-30-at-15.26.58.jpeg" alt="Água">
-                        <div class="menu-item-content">
-                            <h2>Água</h2>
-                            <p>Valor: R$4,50 </p>
-                            <label for="Água">Quantidade:</label>
-                            <select id="Água">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
 
-                            </select>
-                        </div>
-                            <div class="menu-item">
-                            <img src="https://th.bing.com/th?id=OSK.HEROdcF23LjpLGIEo4Lk0MYDJrEZ9euas7qCH_jaxJniP-4&w=384&h=228&c=13&rs=2&o=6&pid=SANGAM" alt="Energetico">
-                            <div class="menu-item-content">
-                                <h2>Energetico</h2>
-                                <p>Valor: R$12,00 </p>
-                                <label for="Energetico">Quantidade:</label>
-                                <select id="Energetico">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-
-                                </select>
+                    <h2>Bebidas</h2>
+                    <div class="menu-category" id="Bebidas">
+                        
+                            <div class="menu-item d-flex">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmycCQRo4JsPvVyFKqQBk0pmD9LWsP1pKu9w&s"
+                                    alt="Refrigerantes">
+                                    <div class="d-flex flex-wrap justify-content-between w-100">
+                                        <div class="menu-item-content">
+                                            <h2>Refrigerantes</h2>
+                                            <p>Valor: R$6,00 </p>
+                                        
+                                        </div>
+                                        <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.00"
+                                                nome="Refrigerantes">Add to Cart</button>
+                
+                                        </div>
+                                    </div>
+                                
                             </div>
 
-                              
-        <!-- Resumo do Pedido -->
-      <h3>
-      <button class="btn btn-primary meu-botao" type="button" onclick="showSummary()">Visualizar Pedido</button>
-      </h3>
-        <div id="summary">
-            <h2>Resumo do Pedido</h2>
-            <p id="order-summary"></p>
-            <p id="total-price">Total: R$0.00</p>
-        </div>
-    </div>
+                                <div class="menu-item d-flex">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0-69gl2VtvQSUA9AouJHYi1uWL7YNL527Q&s"
+                                        alt="Sucos">
+                                        <div class="d-flex flex-wrap justify-content-between w-100">
+                                            <div class="menu-item-content">
+                                                <h2>Sucos</h2>
+                                                <p>Valor: R$6,50 </p>
+            
+                                            </div>
+            
+                                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                                <button type="button" class="btn btn-dark addCarrinho"  valor="6.50"
+                                                    nome="Sucos">Add to Cart</button>
+                    
+                                            </div>
+                                        </div>
+                                
+                                </div>
+                                <div class="menu-item d-flex">
+                                    <img src="https://www.guiadasemana.com.br/contentFiles/image/2019/05/FEA/galeria/52849_w840h525_1558996048shutterstock-1237794556.jpg"
+                                        alt="Vitaminas">
+                                        <div class="d-flex flex-wrap justify-content-between w-100">
+                                            <div class="menu-item-content">
+                                                <h2>Vitaminas-Açaí</h2>
+                                                <p>Valor: R$7,50 </p>
+            
+                                            </div>
+                                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                                <button type="button" class="btn btn-dark addCarrinho"  valor="7.50"
+                                                    nome="Vitaminas de Açai">Add to Cart</button>
+                    
+                                            </div>
+                                        </div>
+                                    
+                                </div>
+                                    <div class="menu-item d-flex">
+                                        <img src="https://abir.org.br/abir/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-30-at-15.26.58.jpeg"
+                                            alt="Água">
+                                            <div class="d-flex flex-wrap justify-content-between w-100">
+                                                <div class="menu-item-content">
+                                                    <h2>Água</h2>
+                                                    <p>Valor: R$4,50 </p>
+            
+                                                </div>
+                                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                                    <button type="button" class="btn btn-dark addCarrinho"  valor="4.50"
+                                                        nome="Água">Add to Cart</button>
+                        
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
+                                        <div class="menu-item d-flex">
+                                            <img src="https://th.bing.com/th?id=OSK.HEROdcF23LjpLGIEo4Lk0MYDJrEZ9euas7qCH_jaxJniP-4&w=384&h=228&c=13&rs=2&o=6&pid=SANGAM"
+                                                alt="Energetico">
+                                                <div class="d-flex flex-wrap justify-content-between w-100">
+                                                    <div class="menu-item-content">
+                                                        <h2>Energetico</h2>
+                                                        <p>Valor: R$12,00 </p>
+            
+                                                    </div>
+                                                    <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
+                                                        <button type="button" class="btn btn-dark addCarrinho"  valor="12.00"
+                                                            nome="Energético">Add to Cart</button>
+                            
+                                                    </div>
+                                                </div>
+                                            
+                                                
+                                        </div>
 
-    <script>
-        function calculateTotal() {
-            let total = 0;
-            const items = document.querySelectorAll('.menu-item-content');
-            items.forEach(item => {
-                const price = parseFloat(item.querySelector('p').textContent.replace('Valor: R$', '').trim());
-                const quantity = parseInt(item.querySelector('select').value);
-                total += price * quantity;
-            });
-            return total;
-        }
+                                    </div>
+                            
+                            
+                            </div>
+                    <!-- Seção do carrinho -->
+                    <div class="cart d-flex flex-column tamanho-2 ps-3">
+                        <div class="sticky-top">
+                            <h2>Carrinho</h2>
+                            <div id="order-summary"></div>
+                            <p id="total-price">Total: R$0.00</p>
+                            <button class="btn btn-dark meu-botao w-100" type="button" onclick="mostrarPedido()">
+                                Salvar Pedido
+                            </button>
+                            <a class="btn btn-dark meu-botao w-100 mt-3"  href="./assets/html/historicoDePedidosFeitos.html">
+                                Histórico geral de pedidos
+                            </a>
+                        </div>
 
-        function showSummary() {
-            const summary = document.getElementById('order-summary');
-            let orderSummary = "Resumo do Pedido:\n";
-            const items = document.querySelectorAll('.menu-item-content');
-            items.forEach(item => {
-                const itemName = item.querySelector('h2').textContent;
-                const quantity = parseInt(item.querySelector('select').value);
-                if (quantity > 0) {
-                    orderSummary += `${itemName}: ${quantity}x\n`;
-                }
-            });
-            summary.textContent = orderSummary;
+                    </div>
 
-            const totalPrice = calculateTotal();
-            document.getElementById('total-price').textContent = `Total: R$${totalPrice.toFixed(2)}`;
-        }
+                        </div>
 
-        // Função para filtrar os itens por categoria
-        function filterItems(category) {
-            const categories = document.querySelectorAll('.menu-category');
-            categories.forEach(cat => {
-                if (cat.id === category) {
-                    cat.style.display = 'block';
-                } else {
-                    cat.style.display = 'none';
-                }
-            });
-        }
-    </script>
 
-</body>
-</html>
+
+                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                            crossorigin="anonymous"></script>
+                        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                        <script>
+                            //cria o carrinho
+                            var carrinho = [];
+                            $(document).ready(function() {
+                                
+                                var quantidade = 1;
+                                var html = "";
+                                var total = 0;
+
+                                //remove um item do carrinho
+                                function removeItem(itemNome) {
+                                    total = 0;
+                                    html = '';
+                                    carrinho.forEach((compra, index) => {
+                                        if (compra.nome === itemNome) {
+                                            compra.quantidade = compra.quantidade - 1;
+                                            if(compra.quantidade == 0){
+                                                carrinho.splice(index, 1);
+                                            }
+                                        } 
+                                    
+
+                                    });
+                                    carrinho.forEach((compra, index)=>{
+                                        html += `<div class='shadow p-2 mb-1 bg-white rounded d-flex align-items-center text-center'>
+                                                    <p class='m-0'>${compra.nome}: ${compra.quantidade}x</p>
+                                                    <button class='btn btn-danger p-1 px-2 ms-auto remove-item' data-item="${index}">
+                                                        <i class="bi bi-dash"></i>
+                                                    </button>
+                                                </div>`;
+                                        total += compra.preco
+                                    })
+
+                                    $('#order-summary').html(html);
+                                    $('#total-price').text(`Total: R$${total.toFixed(2)}`);
+                                }
+
+                                //adiciona itens a carrinho
+                                $('.addCarrinho').click(function() {
+                                    let nome = $(this).attr('nome');
+                                    let preco = parseFloat($(this).attr('valor'));
+
+                                    let itemExiste = false;
+                                    carrinho.forEach(compra => {
+                                        if (compra.nome === nome) {
+                                            compra.quantidade += 1;
+                                            itemExiste = true;
+                                        }
+                                    });
+
+                                    if (!itemExiste) {
+                                        carrinho.push({
+                                            nome: nome,
+                                            preco: preco,
+                                            quantidade: quantidade
+                                        });
+                                    }
+
+                                    total = 0;
+                                    html = '';
+                                    carrinho.forEach((compra, index) => {
+                                        total += compra.preco * compra.quantidade;
+                                        html += `<div class='shadow p-2 mb-1 bg-white rounded d-flex align-items-center text-center'>
+                                                    <p class='m-0'>${compra.nome}: ${compra.quantidade}x</p>
+                                                    <button class='btn btn-danger p-1 px-2 ms-auto remove-item' data-item="${index}">
+                                                        <i class="bi bi-dash"></i>
+                                                    </button>
+                                                </div>`;
+                                    });
+
+                                    $('#order-summary').html(html);
+                                    $('#total-price').text(`Total: R$${total.toFixed(2)}`);
+                                });
+
+                                // Evento delegado para lidar com cliques nos botões de remoção
+                                $('#order-summary').on('click', '.remove-item', function() {
+                                    let index = $(this).data('item');
+                                    let nomeItem = carrinho[index].nome;
+                                    removeItem(nomeItem);
+                                });
+
+                                
+                            });
+
+                            //salva o pedido no localstorage
+                            function mostrarPedido(){
+                                    console.log(carrinho)
+                                
+                                    axios.post("http://localhost:3000/pedidos",{
+                                        carrinho
+                                    }).then(function(response){
+                                        alert("cadastrado com sucesso")
+                                    })
+                                    
+                                
+                                }
+
+                            // Função para filtrar os itens por categoria
+                            function filterItems(category) {
+                                const categories = document.querySelectorAll('.menu-category');
+                                categories.forEach(cat => {
+                                    if (cat.id === category) {
+                                        cat.style.display = 'block';
+                                    } else {
+                                        cat.style.display = 'none';
+                                    }
+                                });
+                            }
+                        </script>
+
+    </body>
+
+    </html>
