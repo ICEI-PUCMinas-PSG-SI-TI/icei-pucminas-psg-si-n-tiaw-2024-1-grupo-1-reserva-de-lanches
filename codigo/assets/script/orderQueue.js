@@ -1,19 +1,24 @@
 
 let comprasPendentes = [];
+let comprasRetiradas = [];
 const content = document.querySelector(".content");
 
 function retirarPedido(idPedido){
-    comprasPendentes = abrirLS();
+    comprasPendentes = abrirLS('pedidos');
+    comprasRetiradas = abrirLS('retiradas');
+
+    let compraFinalizada = comprasPendentes.find(p => p.compraID === idPedido);
+    comprasRetiradas.push(compraFinalizada);
+    console.log("retirados: ", comprasRetiradas);
+    salvarLS('retiradas', comprasRetiradas);    
 
     comprasPendentes = comprasPendentes.filter(p => p.compraID !== idPedido);
-
     salvarLS('carrinho', comprasPendentes);
     filaDePedidos();
-
 }
 
 function finalizarFilaDePedidos(){
-    comprasPendentes = abrirLS();
+    comprasPendentes = abrirLS('carrinho');
 
     comprasPendentes = [];
 
@@ -23,7 +28,7 @@ function finalizarFilaDePedidos(){
 }
 
 function filaDePedidos() {
-    comprasPendentes = abrirLS();
+    comprasPendentes = abrirLS('carrinho');
 
     divCarrinho();
 
@@ -59,8 +64,8 @@ function divCarrinho() {
     });
 }
 
-function abrirLS() {
-    let ls = JSON.parse(localStorage.getItem('carrinho') || '[]');
+function abrirLS(chave) {
+    let ls = JSON.parse(localStorage.getItem(chave) || '[]');
     console.log('Lista recuperada/criada:', ls);
     return ls;
 }
@@ -74,4 +79,4 @@ function salvarLS(chave, item) {
 
 
 filaDePedidos();
-setInterval(filaDePedidos, 4000); 
+//setInterval(filaDePedidos, 4000); 

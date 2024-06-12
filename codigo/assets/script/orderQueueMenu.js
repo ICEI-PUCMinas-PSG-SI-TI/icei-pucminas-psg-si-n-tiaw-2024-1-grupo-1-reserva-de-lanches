@@ -30,6 +30,7 @@ function retornarProdutoCarrinho() {
         cliente: client,
         clienteID: 0,
         compraID: returnIdCompra(),
+        status: "pendente",
         carrinho: [],
         descricao: returnDescricao(),
         total: retornarTotal(carrinho)
@@ -127,12 +128,6 @@ function removerDoCarrinho(id) {
     showCarrinho();
     showCarrinho();
 }
-
-function finalizarCompra() {
-    // Lógica para finalizar a compra
-    console.log("Compra finalizada!");
-}
-
 
 
 function AdicionarAoCarrinho(id, quantidade) {
