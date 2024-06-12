@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    text-align: center;
+  }
+  .pedido-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .pedido-item:last-child {
+    border-bottom: none;
+  }
+  .total {
+    text-align: right;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  .finalizar-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .finalizar-btn:hover {
+    background-color: #218838;
+  }
+  .pedido-id {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
