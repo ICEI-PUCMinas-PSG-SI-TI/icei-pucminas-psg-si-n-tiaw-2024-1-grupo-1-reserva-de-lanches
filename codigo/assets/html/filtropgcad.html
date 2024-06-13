@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu da Lanchonete</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="cadastro.js" defer></script>
+</head>
+
+<body onload="initRegisterPage()">
+    <div class="container">
+        <h1>Controle de Produtos</h1>
+        <div class="menu-item" style="justify-content: center;">
+            <button type="button" class="menu-item-button-incluir" id="cadastrarProduto">Cadastrar Novo produto</button>
+        </div>
+        <div class="filter">
+            <label for="typeFilter">Filtro:</label>
+            <select id="typeFilter">
+                <option value="all">Todos</option>
+                <option value="Comidas">Comidas</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Doces">Doces</option>
+            </select>
+        </div>
+        <div id="listaProdutos">
+            <h2>Comidas</h2>
+            <div class="menu-item Comidas">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg"
+                    alt="Sanduíche Natural">
+                <div class="menu-item-content">
+                    <h2>Sanduíche Natural</h2>
+                    <p>Valor: R$6,50</p>
+                    <p>Estoque: 10</p>
+                </div>
+                <div class="menu-item-content">
+                    <button type="button" class="menu-item-button-editar">Editar</button>
+                    <button type="button" class="menu-item-button-excluir">Excluir</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
