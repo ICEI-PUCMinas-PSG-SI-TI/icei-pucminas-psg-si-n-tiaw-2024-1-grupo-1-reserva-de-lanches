@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STATUS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #f27127;
+        }
+        .order {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .order:hover {
+            transform: scale(1.02);
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .status {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .status-step {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        .status-step img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .status-step.active {
+            color: #f27127;
+        }
+        .status-step.completed {
+            color: #aaa;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+        #back-button {
+            display: none;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #back-button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>STATUS - MEUS PEDIDOS</h1>
+        <button id="back-button">Voltar</button>
+        <div id="orders">
+        </div>
+    </div>
+    <script>
+        const orders = [
+            {
+                id: 112232,
+                usuario: 171,
+                nomeUsuario: "João Silva",
+                produtos: [
+                    { id: 1, quantidade: 2, descricao: "Sanduíche Natural", preco: 6.50 },
+                    { id: 3, quantidade: 1, descricao: "Empada", preco: 6.50 },
+                ],
+                valorTotal: 19.50,
+                data: "31/05/24 18:25:31",
+                status: "PEDIDO REALIZADO",
+            },
+        ];
+        const statusSteps = [
+            { name: "PEDIDO REALIZADO", icon: "https://img.icons8.com/?size=48&id=13029&format=png" },
+            { name: "PREPARANDO PEDIDO", icon: "https://img.icons8.com/?size=48&id=jmChQdAqiBUb&format=png" },
+            { name: "PEDIDO PRONTO PARA RETIRADA", icon: "https://img.icons8.com/?size=40&id=36138&format=png" },
+            { name: "CONCLUÍDO", icon: "https://img.icons8.com/?size=80&id=91260&format=png" },
+        ];
+        const ordersContainer = document.getElementById('orders');
+        const backButton = document.getElementById('back-button');
+        function renderOrders() {
+            ordersContainer.innerHTML = '';
+            orders.forEach(order => {
+                const orderDiv = document.createElement('div');
+                orderDiv.classList.add('order');
+                const orderHeader = document.createElement('div');
+                orderHeader.classList.add('order-header');
+                const orderDate = document.createElement('span');
+                orderDate.textContent = `Seg, ${order.data.split(' ')[0]}`;
+                const orderId = document.createElement('span');
+                orderId.textContent = `Pedido - N° ${order.id}`;
+                const orderUser = document.createElement('span'); 
+                orderUser.textContent = `Usuário: ${order.nomeUsuario}`;
+                orderHeader.appendChild(orderDate);
+                orderHeader.appendChild(orderId);
+                orderHeader.appendChild(orderUser);
+                orderDiv.appendChild(orderHeader);
+
+                const statusContainer = document.createElement('div');
+                statusContainer.classList.add('status');
+
+                statusSteps.forEach((step, index) => {
+                    const statusStep = document.createElement('div');
+                    statusStep.classList.add('status-step');
+                    if (step.name === order.status) {
+                        statusStep.classList.add('active');
+                    } else if (statusSteps.findIndex(s => s.name === order.status) > index) {
+                        statusStep.classList.add('completed');
+                    }
+
+                    const stepIcon = document.createElement('img');
+                    stepIcon.src = step.icon;
+
+                    const stepText = document.createElement('span');
+                    stepText.textContent = step.name;
+
+                    statusStep.appendChild(stepIcon);
+                    statusStep.appendChild(stepText);
+                    statusContainer.appendChild(statusStep);
+                });
+
+                orderDiv.appendChild(statusContainer);
+                ordersContainer.appendChild(orderDiv);
+            });
+        }
+        function updateOrderStatus() {
+            orders.forEach(order => {
+                const currentIndex = statusSteps.findIndex(s => s.name === order.status);
+                if (currentIndex < statusSteps.length - 1) {
+                    order.status = statusSteps[currentIndex + 1].name;
+                }
+            });
+            renderOrders();
+        }
+        renderOrders();
+        
+        function showOrderDetails(orderId) {
+            document.querySelector('.container h1').style.display = 'none';
+            backButton.style.display = 'block';
+            renderOrders(orderId);
+        }
+        backButton.addEventListener('click', () => {
+            document.querySelector('.container h1').style.display = 'block';
+            backButton.style.display = 'none';
+            renderOrders();
+        });
+    </script>
+</body>
+</html>
