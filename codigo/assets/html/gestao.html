@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menu da Lanchonete</title>
+	<link rel="stylesheet" href="../css/gestao.css">
+	<script src="../script/pedidos_mock.js"></script>
+	<script src="../script/Chart.js"></script>
+	<script src="../script/gestao.js"></script>
+</head>
+<body onload="initPage()">
+	<div class="container">
+		<h1>Gerenciamento</h1>
+		
+		<div class="flex-div">
+			<div class="data-div">
+				<div class="div-titulo">
+					<span>Pedidos em aberto</span>
+				</div>
+				<div class="div-input-container">
+					<div class="div-checkbox-pendente">
+						<input type="checkbox" name="pendente" checked="checked" id="pedidos-pendentes">
+						<label for="pendente">Pendentes</label>
+					</div>
+					<div class="div-checkbox-em-andamento">
+						<input type="checkbox" name="em-andamento" checked="checked" id="pedidos-em-andamento">
+						<label for="em-andamento">Em andamento</label>
+					</div>
+				</div>
+				<div class="data-div-conteudo" id="pedidos">
+					<span class="text-pendente">#127301</span>
+					<span class="text-em-andamento">#127307</span>
+				</div>
+			</div>
+
+			<div class="data-div">
+				<div class="div-titulo">
+					<span>Faturamento</span>
+				</div>
+				<div class="div-input-container">
+					<div class="div-radiobox">
+						<input type="radio" name="intervalo_faturamento" id="faturamento-7-dias" checked="checked">
+						<label for="faturamento-7-dias">7 dias</label>
+					</div>
+					<div class="div-radiobox">
+						<input type="radio" name="intervalo_faturamento" id="faturamento-15-dias">
+						<label for="faturamento-15-dias">15 dias</label>
+					</div>
+					<div class="div-radiobox">
+						<input type="radio" name="intervalo_faturamento" id="faturamento-30-dias">
+						<label for="faturamento-30-dias">30 dias</label>
+					</div>
+				</div>
+				<div class="data-div-conteudo" id="faturamento">
+					<span>07/06/24 R$ xxx,xx</span>
+					<span>07/06/24 R$ xxx,xx</span>
+				</div>
+			</div>
+
+			<div id="mais-vendidos" class="data-div">
+				<div class="div-titulo">
+					<span>Produtos mais vendidos</span>
+				</div>
+				<div class="div-input-container">
+					<div class="div-radiobox">
+						<input type="radio" name="intervalo_produtos" id="produtos-7-dias" checked="checked">
+						<label for="produto-7-dias">7 dias</label>
+					</div>
+					<div class="div-radiobox">
+						<input type="radio" name="intervalo_produtos" id="produtos-15-dias">
+						<label for="produto-15-dias">15 dias</label>
+					</div>
+					<div class="div-radiobox">
+						<input type="radio" name="intervalo_produtos" id="produtos-30-dias">
+						<label for="produto-30-dias">30 dias</label>
+					</div>
+				</div>
+				<div class="data-div-conteudo" id="produtos">
+					<span>Produto 1</span>
+					<span>Produto 2</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="flex-div">
+			<div id="pedidos" class="data-div">
+				<canvas id="chart1" class="canvas"></canvas>
+			</div>
+			
+			<div id="pedidos" class="data-div">
+				<canvas id="chart2" class="canvas"></canvas>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
