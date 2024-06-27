@@ -14,9 +14,9 @@
 
         <!-- Botões de filtro -->
         <div class="filters">
-            <button onclick="filterItems('Comidas')">Salgados</button>
-            <button onclick="filterItems('Bebidas')">Bebidas</button>
-            <button onclick="filterItems('Doces')">Doces</button>
+            <button onclick="filterItems('Doces', 'Bebidas')">Salgados</button>
+            <button onclick="filterItems('Doces', 'Comidas')">Bebidas</button>
+            <button onclick="filterItems('Comidas', 'Bebidas')">Doces</button>
         </div>
         <div></div>
         <!-- Itens do menu -->
@@ -31,19 +31,16 @@
                 console.log(db)
                 fillProductsCards();
 
-                function filterItems(showOnly){
+                function filterItems(hidde1, hidde2) {
                     let parent = document.querySelector('.items-cards')
                     let childrenArray = Array.from(parent.children)
 
-                    childrenArray.forEach( o =>{
-                        if(!o.classList.contains(showOnly)){
-                            if(o.classList.contains('hidden')){
-                                o.classList.remove('hidden')
-                            }
-                            else{
-                                o.classList.add('hidden')
-                            }
-                            
+                    childrenArray.forEach(o => {
+                        if (!o.classList.contains(hidde1) && !o.classList.contains(hidde2) || o.classList.contains('hidden')) {
+                            o.classList.remove('hidden')
+                        }
+                        else{
+                            o.classList.add('hidden')
                         }
                     })
                 }
