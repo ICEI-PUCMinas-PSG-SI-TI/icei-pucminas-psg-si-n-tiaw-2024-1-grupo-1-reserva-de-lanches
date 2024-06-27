@@ -196,7 +196,7 @@ function loadProducts() {
 
     let strHTML = '';
 
-    for (let i = 0; i < dbProdutos.tipo.length; i++) {
+    for (let i = 0; i < dbProdutos.length; i++) { //dbProdutos.items.length
 
         strHTML += `<h2>${dbProdutos.tipo[i]}</h2>`
         strHTML += '\n';

@@ -100,7 +100,7 @@ function addProduct(e) {
     }
 
     localStorage.setItem('dbProdutos', JSON.stringify(dbProdutos));
-    window.open("cadastro.html", '_self');
+    window.open("../html/cadastroDeProdutos.html", '_self');
 }
 
 function getProductIndex(id) {
