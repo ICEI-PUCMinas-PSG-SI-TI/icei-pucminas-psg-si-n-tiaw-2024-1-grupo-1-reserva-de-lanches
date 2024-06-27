@@ -14,9 +14,9 @@
 
         <!-- Botões de filtro -->
         <div class="filters">
-            <button onclick="filterItems('Comidas')">Comidas</button>
+            <button onclick="filterItems('Comidas')">Salgados</button>
             <button onclick="filterItems('Bebidas')">Bebidas</button>
-
+            <button onclick="filterItems('Doces')">Doces</button>
         </div>
         <div></div>
         <!-- Itens do menu -->
@@ -31,6 +31,23 @@
                 console.log(db)
                 fillProductsCards();
 
+                function filterItems(showOnly){
+                    let parent = document.querySelector('.items-cards')
+                    let childrenArray = Array.from(parent.children)
+
+                    childrenArray.forEach( o =>{
+                        if(!o.classList.contains(showOnly)){
+                            if(o.classList.contains('hidden')){
+                                o.classList.remove('hidden')
+                            }
+                            else{
+                                o.classList.add('hidden')
+                            }
+                            
+                        }
+                    })
+                }
+
                 function fillProductsCards() {
                     let divMenu = document.querySelector('.items-cards')
 
@@ -42,6 +59,7 @@
                 function createCards(data) {
                     let div = document.createElement('div');
                     div.classList.add('menu-item');
+                    div.classList.add(`${data.tipo}`)
                     div.classList.add(data.tipo);
                     div.id = `${data.id}`;
                     div.innerHTML = `
@@ -55,7 +73,7 @@
 
                     let addToCartButton = div.querySelector('.add-to-cart-btn');
                     addToCartButton.addEventListener('click', function () {
-                        addToCart(div.id); // Passes the product ID or any other relevant data to addToCart function
+                        addToCart(div.id);
                     });
                     return div;
                 }
@@ -77,13 +95,11 @@
                     }
                 }
 
-
                 function fillDbProducts() {
                     let data = JSON.parse(localStorage.getItem('dbProdutos')) || [];
 
                     db = data.items;
                 }
-
 
                 function calculateTotal() {
                     let total = 0;
@@ -113,17 +129,6 @@
                     document.getElementById('total-price').textContent = `Total: R$${totalPrice.toFixed(2)}`;
                 }
 
-                // Função para filtrar os itens por categoria
-                function filterItems(category) {
-                    const categories = document.querySelectorAll('.menu-category');
-                    categories.forEach(cat => {
-                        if (cat.id === category) {
-                            cat.style.display = 'block';
-                        } else {
-                            cat.style.display = 'none';
-                        }
-                    });
-                }
             </script>
 
 </body>
