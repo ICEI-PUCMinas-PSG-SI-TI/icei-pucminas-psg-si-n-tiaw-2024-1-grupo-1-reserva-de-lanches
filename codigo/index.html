@@ -14,6 +14,7 @@
 
         <!-- Botões de filtro -->
         <div class="filters">
+            <button onclick="showCarrinho('assets/html/finalizarPedido.html')">Ver Carrinho</button>
             <button onclick="filterItems('Doces', 'Bebidas')">Salgados</button>
             <button onclick="filterItems('Doces', 'Comidas')">Bebidas</button>
             <button onclick="filterItems('Comidas', 'Bebidas')">Doces</button>
@@ -26,10 +27,19 @@
 
             <script>
                 let db = []
+                let hasAnyProdInCart = false
 
                 fillDbProducts();
                 console.log(db)
                 fillProductsCards();
+
+                function showCarrinho(url) {
+                    if(hasAnyProdInCart){
+                        window.location.href = url;
+                    }else{
+                        console.log('carrinho vazio')
+                    }
+                }
 
                 function filterItems(hidde1, hidde2) {
                     let parent = document.querySelector('.items-cards')
@@ -39,7 +49,7 @@
                         if (!o.classList.contains(hidde1) && !o.classList.contains(hidde2) || o.classList.contains('hidden')) {
                             o.classList.remove('hidden')
                         }
-                        else{
+                        else {
                             o.classList.add('hidden')
                         }
                     })
@@ -83,7 +93,11 @@
                         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
                         cart.push(product);
-
+                        if(cart.length > 0){
+                            hasAnyProdInCart = true;
+                        }else{
+                            hasAnyProdInCart = false;
+                        }
                         sessionStorage.setItem('cart', JSON.stringify(cart));
 
                         console.log(`Product ID ${productId} added to cart`);
