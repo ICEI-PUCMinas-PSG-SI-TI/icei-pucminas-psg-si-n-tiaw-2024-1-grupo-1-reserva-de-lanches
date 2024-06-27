@@ -1,0 +1,20 @@
+{
+  "name": "reserva-de-lanches",
+  "version": "1.0.0",
+  "description": "Site de reservas de lanches, baseado na problemática enfrentada pelos alunos da PUC Minas São Gabriel.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ICEI-PUCMinas-PSG-SI-TI/icei-pucminas-psg-si-n-tiaw-2024-1-grupo-1-reserva-de-lanches.git"
+  },
+  "author": "Alunos SI PUC Minas",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ICEI-PUCMinas-PSG-SI-TI/icei-pucminas-psg-si-n-tiaw-2024-1-grupo-1-reserva-de-lanches/issues"
+  },
+  "homepage": "https://github.com/ICEI-PUCMinas-PSG-SI-TI/icei-pucminas-psg-si-n-tiaw-2024-1-grupo-1-reserva-de-lanches#readme"
+}

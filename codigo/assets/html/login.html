@@ -34,7 +34,12 @@
                     <input type="text" name="username" id="login-username" placeholder="Email">
 
                     <input type="password" name="password" id="login-password" placeholder="Senha">
+                    <div>
+                        <input type="checkbox" id="employee-toggle">
+                        <label for="employee-toggle" style="font-size: 12px; font-weight: 400;">Funcionário?</label>
+                    </div>
                 </div>
+
 
                 <div>
                     <button class="btn" id="login-button" onclick="validarLogin()">Logar</button>
@@ -56,23 +61,44 @@
         const loginEmail = document.getElementById('login-username');
         const loginPassword = document.getElementById('login-password');
 
-        const userList = [];
+        const employeeToggle = document.getElementById('employee-toggle');
+
+        let isEmployee = false;
 
         function validarLogin() {
+            let list = ""
+            let address = ""
+            if(isEmployee){
+                list = 'employeeList'
+                address = "orderQueue.html"
+            }
+            else{
+                list = 'userList'
+                addres = "../../index.html"
+            }
 
-            let userList = JSON.parse(localStorage.getItem('userList')) || [];
+            let userList = JSON.parse(localStorage.getItem(list)) || [];
+            let userFound = false;
 
             for (let user of userList) {
-
-                if (user._email === loginEmail.value && user._password === loginPassword.value) {
-                    alert('Redirecionando...'); 
-                    window.location.href = "../../index.html";
-                    break;
-                } else {
-                    alert('Usuário não encontrado.'); 
+                if (user.email === loginEmail.value && user.password === loginPassword.value) {
+                    alert(`Redirecionando - ${list} / ${address} ...`);
+                    window.location.href = address;
+                    userFound = true;
                 }
             }
+            if (!userFound) {
+                alert('Usuário não encontrado. LOGIN')
+            }
         }
+
+        employeeToggle.addEventListener('change', () => {
+            if (employeeToggle.checked) {
+                isEmployee = true;
+            } else {
+                isEmployee = false;
+            }
+        });
 
     </script>
 </body>

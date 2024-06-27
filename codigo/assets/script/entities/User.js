@@ -55,9 +55,6 @@ function validarCadastro() {
 }
 
 
-
-
-
 function verificarDuplicidadeDeEmail(newUser) {
     const userList = JSON.parse(localStorage.getItem('userList'));
 
@@ -210,4 +207,5 @@ class User {
     set password(password) {
         this._password = password;
     }
+
 }

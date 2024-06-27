@@ -32,281 +32,263 @@
     <main>
 
         <div class="container" id="login">
-
-
-
             <div class="subcontainer" id="form">
-
                 <div>
                     <h2 class="tittle">CADASTRO</h2>
                 </div>
-
-                <div class="hidden" id="successfull-warning">
+                <div class="hidden" id="successfull-warning" style="z-index: 1000;">
                     <p class="text">Cadastrando usuário...</p>
                 </div>
                 <div class="hidden" id="password-warning">
                     <p class="text" id="error-text">Uma senha forte contem pelo menos um(a): <br>Letra maiúscula,
                         número, caracter especial</p>
                 </div>
-
                 <div class="subcontainer" id="float-form">
                     <input type="text" name="name" id="register-name" placeholder="Digite seu nome:" required>
-
                     <input type="text" name="name" id="register-lastName" placeholder="Digite seu sobrenome:" required>
-
-                    <input type="text" name="enrollment" id="register-enrollment" placeholder="digite sua matrícula:"
+                    <input type="text" name="enrollment" id="register-enrollment" placeholder="Digite sua matrícula:"
                         inputmode="numeric" required>
-
                     <input type="text" name="username" id="register-username" placeholder="Digite seu e-mail:" required>
-
                     <input type="password" name="password" id="register-password" placeholder="Crie sua senha:"
                         required>
-
                     <input type="password" name="confirmPassword" id="register-confirmPassword"
                         placeholder="Confirme sua senha:" required>
 
+                    <!-- Toggle Button Funcionário -->
+                    <div>
+                        <input type="checkbox" id="employee-toggle">
+                        <label for="employee-toggle" style="font-size: 12px; font-weight: 400;">Funcionário?</label>
+                    </div>
                 </div>
-
                 <div>
                     <button class="btn" id="cadastrar-button" onclick="validarCadastro()">Cadastrar</button>
                 </div>
-
                 <div>
                     <p class="text">Já possui uma conta?
                         <a class="link" href="../html/login.html">Faça login</a>
                     </p>
                 </div>
-
             </div>
         </div>
     </main>
 
-        <script>
-            const firstName = document.getElementById('register-name');
-            const lastName = document.getElementById('register-lastName');
-            const email = document.getElementById('register-username');
-            const password = document.getElementById('register-password');
-            const confirmPassword = document.getElementById('register-confirmPassword');
-            const enrollment = document.getElementById('register-enrollment');
-            const successWarning = document.getElementById('successfull-warning');
-            const passwordWarning = document.getElementById('password-warning');
+    <script>
+        const firstName = document.getElementById('register-name');
+        const lastName = document.getElementById('register-lastName');
+        const email = document.getElementById('register-username');
+        const password = document.getElementById('register-password');
+        const confirmPassword = document.getElementById('register-confirmPassword');
+        const enrollment = document.getElementById('register-enrollment');
+        const successWarning = document.getElementById('successfull-warning');
+        const passwordWarning = document.getElementById('password-warning');
 
-            let nameCheck = false;
-            let isLastNameValid = false;
-            let isEmailValid = false;
-            let passwordCheck = false;
-            let confirmPasswordCheck = false;
-            let isEnrollmentValid = false;
+        const employeeToggle = document.getElementById('employee-toggle');
 
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)(?=.*[A-Z]).*$/;
-            const userList = JSON.parse(localStorage.getItem('userList')) || [];
+        let isEmployee = false;
+        let nameCheck = false;
+        let isLastNameValid = false;
+        let isEmailValid = false;
+        let passwordCheck = false;
+        let confirmPasswordCheck = false;
+        let isEnrollmentValid = false;
 
-            // --------- Validações ---------//
-            function validarCadastro() {
-                console.log('1 - validarCadastro chamado');
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)(?=.*[A-Z]).*$/;
+        const userList = JSON.parse(localStorage.getItem('userList')) || [];
 
-                if (nameCheck && isLastNameValid && isEmailValid && passwordCheck && confirmPasswordCheck && isEnrollmentValid) {
-                    console.log('2 - Todos os campos são válidos');
+        // --------- Validações ---------//
+        function validarCadastro() {
 
-                    let userList = JSON.parse(localStorage.getItem('userList')) || [];
-                    let newUser = new User(firstName.value, lastName.value, email.value, enrollment.value, password.value);
+            console.log('1 - validarCadastro chamado');
 
-                    if (!verificarDuplicidadeDeEmail(newUser)) {
-                        console.log('3 - Email não duplicado');
-
-                        if (!verificarDuplicidadeDeMatricula(newUser)) {
-                            console.log('4 - Matrícula não duplicada');
-                            userList.push(newUser);
-                            localStorage.setItem('userList', JSON.stringify(userList));
-
-                            clearRegisterFields();
-
-                            successWarning.style.display = 'block';
-
-                            window.location.href = "../../assets/html/login.html";
-
-                        } else {
-                            console.log('4a - Matrícula duplicada');
-                            alert('enrollment already exist in our base')
-                        }
-
-                    } else {
-                        console.log('3a - Email duplicado');
-                        alert('email alredy exist in our base.')
-                    }
-
-
-                } else {
-                    console.log('2a - Nem todos os campos são válidos');
-                    alert('Todos os campos devem conferir.')
-                }
+            if (!nameCheck && !isLastNameValid && !isEmailValid && !passwordCheck && !confirmPasswordCheck) {
+                alert('Todos os campos devem ser válidos.');
             }
 
-            function verificarDuplicidadeDeEmail(newUser) {
-                console.log('5 - verificarDuplicidadeDeEmail chamado');
+            if (isEmployee) {
+                console.log("Cadastrado de funcionário: ")
+                let employeeList = JSON.parse(localStorage.getItem('employeeList')) || [];
 
-                for (let user of userList) {
-                    if (user._email === newUser.email) {
-                        console.log('5a - Email encontrado');
-                        return true;
-                    }
+                let newEmployee = {
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                    password: password.value
+                };
+
+                if (verificarDuplicidadeDeEmail(newEmployee, employeeList)) {
+                    alert('Email already exists in our database.');
+                    return
                 }
-                console.log('5b - Email não encontrado');
-                return false;
+
+                employeeList.push(newEmployee);
+                console.log(employeeList)
+                localStorage.setItem('employeeList', JSON.stringify(employeeList));
+                clearRegisterFields();
+                alert('funcionario cadastrado!')
+                //  window.location.href = "../../assets/html/login.html";
+                return
             }
 
-            function verificarDuplicidadeDeMatricula(newUser) {
-                console.log('6 - verificarDuplicidadeDeMatricula chamado');
+            console.log("Cadastrado de aluno: ")
+            let userList = JSON.parse(localStorage.getItem('userList')) || [];
 
-                for (let user of userList) {
-                    if (user._enrollment === newUser.enrollment) {
-                        console.log('6a - Matrícula encontrada');
-                        return true;
-                    }
-                }
-                console.log('6b - Matrícula não encontrada');
-                return false;
+            let newUser = {
+                firstName: firstName.value,
+                lastName: lastName.value,
+                email: email.value,
+                enrollment: enrollment.value,
+                password: password.value
+            };
+
+            if (!isEnrollmentValid) {
+                alert('Todos os campos devem ser válidos.');
+                return
             }
 
-            //---- Comodidades -------//
-
-            function clearRegisterFields() {
-                console.log('7 - clearRegisterFields chamado');
-                firstName.value = '';
-                lastName.value = '';
-                email.value = '';
-                password.value = '';
-                confirmPassword.value = '';
-                enrollment.value = '';
+            if (verificarDuplicidadeDeEmail(newUser, userList)) {
+                alert('Email already exists in our database.');
+                return
             }
 
-            function clearLoginFields() {
-                console.log('8 - clearLoginFields chamado');
-                loginEmail.value = '';
-                loginPassword.value = '';
+            if (verificarDuplicidadeDeMatricula(newUser, userList)) {
+                alert('Enrollment already exists in our database.');
+                return
             }
 
-            // -----  Event Listeners - validação de formulário de cadastro ------ //
-            password.addEventListener('keyup', () => {
-                console.log('9 - password keyup');
-                if (passwordRegex.test(password.value)) {
-                    password.style.borderBottomColor = 'green';
-                    passwordWarning.style.display = 'none';
-                    passwordCheck = true;
-                } else if (password.value.length < 1) {
-                    password.style.borderBottomColor = 'black';
-                    passwordWarning.style.display = 'none';
-                    passwordCheck = false;
-                } else {
-                    password.style.borderBottomColor = 'black';
-                    passwordWarning.style.display = 'block';
-                    passwordCheck = false;
-                }
-            });
+            userList.push(newUser);
+            localStorage.setItem('userList', JSON.stringify(userList));
+            clearRegisterFields();
+            alert('aluno cadastrado!')
+            window.location.href = "../../assets/html/login.html";
+        }
 
-            confirmPassword.addEventListener('keyup', () => {
-                console.log('10 - confirmPassword keyup');
-                if (confirmPassword.value === password.value) {
-                    confirmPassword.style.borderBottomColor = 'green';
-                    confirmPasswordCheck = true;
-                } else {
-                    confirmPassword.style.borderBottomColor = 'black';
-                    confirmPasswordCheck = false;
-                }
-            });
+        function verificarDuplicidadeDeEmail(user, users) {
+            console.log('5 - verificarDuplicidadeDeEmail chamado');
 
-            enrollment.addEventListener('keyup', () => {
-                console.log('11 - enrollment keyup');
-                if (enrollment.value.length === 7) {
-                    enrollment.style.borderBottomColor = 'green';
-                    isEnrollmentValid = true;
-                } else {
-                    enrollment.style.borderBottomColor = 'black';
-                    isEnrollmentValid = false;
-                }
-            });
+            for (let o of users) {
 
-            email.addEventListener('keyup', () => {
-                console.log('12 - email keyup');
-                if (email.value.match(emailRegex)) {
-                    email.style.borderBottomColor = 'green';
-                    isEmailValid = true;
-                } else {
-                    email.style.borderBottomColor = 'black';
-                    isEmailValid = false;
-                }
-            });
-
-            firstName.addEventListener('keyup', () => {
-                console.log('13 - firstName keyup');
-                if (firstName.value.length < 2) {
-                    firstName.style.borderBottomColor = 'black';
-                    nameCheck = false;
-                } else {
-                    firstName.style.borderBottomColor = 'green';
-                    nameCheck = true;
-                }
-            })
-
-            lastName.addEventListener('keyup', () => {
-                console.log('14 - lastName keyup');
-                if (lastName.value.length < 2) {
-                    lastName.style.borderBottomColor = 'black';
-                    isLastNameValid = false;
-                } else {
-                    lastName.style.borderBottomColor = 'green';
-                    isLastNameValid = true;
-                }
-            })
-            // ------ Classes ----------- //
-
-            class User {
-                constructor(name, lastName, email, enrollment, password) {
-                    this._name = name;
-                    this._lastName = lastName;
-                    this._email = email;
-                    this._enrollment = enrollment;
-                    this._password = password;
-                }
-
-                get name() {
-                    return this._name;
-                }
-                set name(name) {
-                    this._name = name;
-                }
-
-                get lastName() {
-                    return this._lastName;
-                }
-                set lastName(lastName) {
-                    this._lastName = lastName;
-                }
-
-                get email() {
-                    return this._email;
-                }
-                set email(email) {
-                    this._email = email;
-                }
-
-                get enrollment() {
-                    return this._enrollment;
-                }
-                set enrollment(enrollment) {
-                    this._enrollment = enrollment;
-                }
-
-                get password() {
-                    return this._password;
-                }
-                set password(password) {
-                    this._password = password;
+                if (o.email === user.email) {
+                    console.log('Email encontrado');
+                    return true;
                 }
             }
+            console.log('Email não encontrado');
+            return false;
+        }
 
-        </script>
+        function verificarDuplicidadeDeMatricula(user, users) {
+            for (let o of users) {
+                if (o.enrollment === user.enrollment) {
+                    console.log('6a - Matrícula encontrada');
+                    return true;
+                }
+            }
+            console.log('6b - Matrícula não encontrada');
+            return false;
+        }
+
+        //---- Comodidades -------//
+
+        function clearRegisterFields() {
+            firstName.value = '';
+            lastName.value = '';
+            email.value = '';
+            password.value = '';
+            confirmPassword.value = '';
+            enrollment.value = '';
+        }
+
+        function clearLoginFields() {
+            loginEmail.value = '';
+            loginPassword.value = '';
+        }
+
+        // -----  Event Listeners - validação de formulário de cadastro ------ //
+
+        password.addEventListener('keyup', () => {
+            console.log('9 - password keyup');
+            if (passwordRegex.test(password.value)) {
+                password.style.borderBottomColor = 'green';
+                passwordWarning.style.display = 'none';
+                passwordCheck = true;
+            } else if (password.value.length < 1) {
+                password.style.borderBottomColor = 'black';
+                passwordWarning.style.display = 'none';
+                passwordCheck = false;
+            } else {
+                password.style.borderBottomColor = 'black';
+                passwordWarning.style.display = 'block';
+                passwordCheck = false;
+            }
+        });
+
+        confirmPassword.addEventListener('keyup', () => {
+            console.log('10 - confirmPassword keyup');
+            if (confirmPassword.value === password.value) {
+                confirmPassword.style.borderBottomColor = 'green';
+                confirmPasswordCheck = true;
+            } else {
+                confirmPassword.style.borderBottomColor = 'black';
+                confirmPasswordCheck = false;
+            }
+        });
+
+        enrollment.addEventListener('keyup', () => {
+            console.log('11 - enrollment keyup');
+            if (enrollment.value.length === 6) {
+                enrollment.style.borderBottomColor = 'green';
+                isEnrollmentValid = true;
+            } else {
+                enrollment.style.borderBottomColor = 'black';
+                isEnrollmentValid = false;
+            }
+        });
+
+        email.addEventListener('keyup', () => {
+            console.log('12 - email keyup');
+            if (email.value.match(emailRegex)) {
+                email.style.borderBottomColor = 'green';
+                isEmailValid = true;
+            } else {
+                email.style.borderBottomColor = 'black';
+                isEmailValid = false;
+            }
+        });
+
+        firstName.addEventListener('keyup', () => {
+            console.log('13 - firstName keyup');
+            if (firstName.value.length < 2) {
+                firstName.style.borderBottomColor = 'black';
+                nameCheck = false;
+            } else {
+                firstName.style.borderBottomColor = 'green';
+                nameCheck = true;
+            }
+        })
+
+        lastName.addEventListener('keyup', () => {
+            console.log('14 - lastName keyup');
+            if (lastName.value.length < 2) {
+                lastName.style.borderBottomColor = 'black';
+                isLastNameValid = false;
+            } else {
+                lastName.style.borderBottomColor = 'green';
+                isLastNameValid = true;
+            }
+        })
+
+        employeeToggle.addEventListener('change', () => {
+            if (employeeToggle.checked) {
+                enrollment.classList.add('hidden');
+                isEmployee = true;
+            } else {
+                enrollment.classList.remove('hidden');
+                isEmployee = false;
+            }
+        });
+
+    </script>
 </body>
 
 </html>

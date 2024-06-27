@@ -1,6 +1,8 @@
 main {
     width: 101vw;
     height: 100svh;
+    display: flex;
+    justify-content: center;
     background-image: url('../midias/fotos/burguer.jpg');
     background-size: cover;
     background-position: center;
