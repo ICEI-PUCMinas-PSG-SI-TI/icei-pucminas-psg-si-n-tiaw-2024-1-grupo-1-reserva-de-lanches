@@ -23,93 +23,108 @@
         <div id="menu-items">
             <h2>Comidas</h2>
             <div class="menu-category items-cards" id="Comidas"></div>
-               
+
+            <script>
+                let db = []
+
+                fillDbProducts();
+                console.log(db)
+                fillProductsCards();
+
+                function fillProductsCards() {
+                    let divMenu = document.querySelector('.items-cards')
+
+                    db.forEach(o => {
+                        divMenu.appendChild(createCards(o))
+                    })
+                }
+
+                function createCards(data) {
+                    let div = document.createElement('div');
+                    div.classList.add('menu-item');
+                    div.classList.add(data.tipo);
+                    div.id = `${data.id}`;
+                    div.innerHTML = `
+                        <img src="${data.img}" alt="Enrolado de Salsicha">
+                        <div class="menu-item-content">
+                            <h2>${data.descricao}</h2>
+                            <p>Valor: R$ ${data.preco}</p>
+                        </div>
+                        <button class="add-to-cart-btn">Adicionar ao carrinho</button>
+                    `;
+
+                    let addToCartButton = div.querySelector('.add-to-cart-btn');
+                    addToCartButton.addEventListener('click', function () {
+                        addToCart(div.id); // Passes the product ID or any other relevant data to addToCart function
+                    });
+                    return div;
+                }
+
+                function addToCart(productId) {
+                    let id = parseInt(productId)
+                    let product = db.find(o => o.id === id);
+
+                    if (product) {
+                        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+                        cart.push(product);
+
+                        sessionStorage.setItem('cart', JSON.stringify(cart));
+
+                        console.log(`Product ID ${productId} added to cart`);
+                    } else {
+                        console.log(`Product ID ${productId} not found`);
+                    }
+                }
 
 
+                function fillDbProducts() {
+                    let data = JSON.parse(localStorage.getItem('dbProdutos')) || [];
 
-                        <!--
-    <div class="menu-item">
-        
-    </div>     
--->
-
-
-                        <script>
-                            let db = []
-
-                            fillDbProducts();
-                            fillProductsCards();
-
-                            function fillProductsCards(){                                
-                                let divMenu = document.querySelector('.items-cards')
-
-                                db.forEach( o =>{
-                                    divMenu.appendChild(createCards(o))
-                                })
-                            }
-                            
-                            function createCards(data) {
-                                let div = document.createElement('div');
-                                div.classList.add('menu-item')
-                                div.innerHTML = `
-                                    <img src="${data.img}" alt="Enrolado de Salsicha">
-                                    <div class="menu-item-content">
-                                        <h2>${data.descricao}</h2>
-                                        <p>Valor: R$ ${data.preco} </p>
-                                    </div>
-                                `
-                                return div
-                            }
-
-                            function fillDbProducts() {
-                                let data = JSON.parse(localStorage.getItem('dbProdutos')) || [];
-
-                                db = data.items;
-                            }
+                    db = data.items;
+                }
 
 
+                function calculateTotal() {
+                    let total = 0;
+                    const items = document.querySelectorAll('.menu-item-content');
+                    items.forEach(item => {
+                        const price = parseFloat(item.querySelector('p').textContent.replace('Valor: R$', '').trim());
+                        const quantity = parseInt(item.querySelector('select').value);
+                        total += price * quantity;
+                    });
+                    return total;
+                }
 
+                function showSummary() {
+                    const summary = document.getElementById('order-summary');
+                    let orderSummary = "Resumo do Pedido:\n";
+                    const items = document.querySelectorAll('.menu-item-content');
+                    items.forEach(item => {
+                        const itemName = item.querySelector('h2').textContent;
+                        const quantity = parseInt(item.querySelector('select').value);
+                        if (quantity > 0) {
+                            orderSummary += `${itemName}: ${quantity}x\n`;
+                        }
+                    });
+                    summary.textContent = orderSummary;
 
-                            function calculateTotal() {
-                                let total = 0;
-                                const items = document.querySelectorAll('.menu-item-content');
-                                items.forEach(item => {
-                                    const price = parseFloat(item.querySelector('p').textContent.replace('Valor: R$', '').trim());
-                                    const quantity = parseInt(item.querySelector('select').value);
-                                    total += price * quantity;
-                                });
-                                return total;
-                            }
+                    const totalPrice = calculateTotal();
+                    document.getElementById('total-price').textContent = `Total: R$${totalPrice.toFixed(2)}`;
+                }
 
-                            function showSummary() {
-                                const summary = document.getElementById('order-summary');
-                                let orderSummary = "Resumo do Pedido:\n";
-                                const items = document.querySelectorAll('.menu-item-content');
-                                items.forEach(item => {
-                                    const itemName = item.querySelector('h2').textContent;
-                                    const quantity = parseInt(item.querySelector('select').value);
-                                    if (quantity > 0) {
-                                        orderSummary += `${itemName}: ${quantity}x\n`;
-                                    }
-                                });
-                                summary.textContent = orderSummary;
-
-                                const totalPrice = calculateTotal();
-                                document.getElementById('total-price').textContent = `Total: R$${totalPrice.toFixed(2)}`;
-                            }
-
-                            // Função para filtrar os itens por categoria
-                            function filterItems(category) {
-                                const categories = document.querySelectorAll('.menu-category');
-                                categories.forEach(cat => {
-                                    if (cat.id === category) {
-                                        cat.style.display = 'block';
-                                    } else {
-                                        cat.style.display = 'none';
-                                    }
-                                });
-                            }
-                        </script>
+                // Função para filtrar os itens por categoria
+                function filterItems(category) {
+                    const categories = document.querySelectorAll('.menu-category');
+                    categories.forEach(cat => {
+                        if (cat.id === category) {
+                            cat.style.display = 'block';
+                        } else {
+                            cat.style.display = 'none';
+                        }
+                    });
+                }
+            </script>
 
 </body>
 
