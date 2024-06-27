@@ -68,13 +68,16 @@
         function validarLogin() {
             let list = ""
             let address = ""
+            let type = ""
             if(isEmployee){
                 list = 'employeeList'
                 address = "orderQueue.html"
+                type = 'employee'
             }
             else{
                 list = 'userList'
-                addres = "../../index.html"
+                address = "../../index.html"
+                type = 'student'
             }
 
             let userList = JSON.parse(localStorage.getItem(list)) || [];
@@ -83,8 +86,18 @@
             for (let user of userList) {
                 if (user.email === loginEmail.value && user.password === loginPassword.value) {
                     alert(`Redirecionando - ${list} / ${address} ...`);
-                    window.location.href = address;
+
+                    let loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser')) || [];
+                    loggedInUser = [];
+                    let loggedIn = {
+                        email : user.email,
+                        accessType: type
+                    }
+                    loggedInUser.push(loggedIn)
+                    sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser))
+
                     userFound = true;
+                    window.location.href = address;
                 }
             }
             if (!userFound) {
