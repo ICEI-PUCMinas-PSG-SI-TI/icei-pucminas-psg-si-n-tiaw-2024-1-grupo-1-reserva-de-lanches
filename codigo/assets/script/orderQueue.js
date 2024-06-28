@@ -1,4 +1,3 @@
-
 let comprasPendentes = [];
 let comprasRetiradas = [];
 let comprasEncerradas = [];
@@ -15,13 +14,13 @@ function retirarPedido(clienteEmail) {
     let compraFinalizada = comprasPendentes.find(p => p.cliente === clienteEmail);
     if (!compraFinalizada) {
         console.log(`Pedido do cliente ${clienteEmail} não encontrado.`);
-        return
+        return;
     }
 
     comprasRetiradas.push(compraFinalizada);
-    comprasRetiradas.forEach( o =>{
-        o.status = 'retirado'
-    })
+    comprasRetiradas.forEach(o => {
+        o.status = 'retirado';
+    });
     salvarLS('pedidos-retirados', comprasRetiradas);
 
     console.log("retirados: ", comprasRetiradas);
@@ -32,28 +31,26 @@ function retirarPedido(clienteEmail) {
     filaDePedidos();
 }
 
-
 function finalizarFilaDePedidos() {
-    comprasEncerradas = abrirLS('pedidos')
-    if(comprasEncerradas.length < 1){
-        alert('Não há pedidos na fila.')
-        return
+    comprasEncerradas = abrirLS('pedidos');
+    if (comprasEncerradas.length < 1) {
+        alert('Não há pedidos na fila.');
+        return;
     }
 
     comprasPendentes = [];
 
     comprasEncerradas.forEach(o => {
-        o.status = 'encerrado'
-    })
+        o.status = 'encerrado';
+    });
 
-    salvarLS('compras-encerradas', comprasEncerradas)
+    salvarLS('compras-encerradas', comprasEncerradas);
     salvarLS('pedidos', comprasPendentes);
 
     filaDePedidos();
 }
 
 function filaDePedidos() {
-
     divCarrinho();
 }
 
@@ -75,15 +72,44 @@ function divCarrinho() {
         // Supondo que você tenha um campo de ID de compra e total no objeto p.
         div.innerHTML = `
         <h3>Cliente: ${p.cliente}</h3>
+        <h4>Número do pedido: ${p.id}</h4>
         <h4>ITENS: ${itensString}</h4>
         <h3>Total: ${p.items.reduce((acc, item) => acc + parseFloat(item.total.replace('R$', '').trim()), 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
 
-        <button class="btn" onClick="retirarPedido('${p.cliente}')">Retirar</button>
+        <button class="btn" onClick="showConfirm('${p.id}', '${p.cliente}')">Retirar</button>
     `;
         content.appendChild(div);
     });
 }
 
+let id, ipt, globalClient, div;
+function showConfirm(clienteId, clienteEmail) {
+    let divConfirm = document.querySelector('.alerta');
+    let input = divConfirm.querySelector('#confirm-id');
+    console.log(input)
+
+    id = clienteId;
+    ipt = input;
+    globalClient = clienteEmail; // Usando 'globalClient' em vez de 'client'
+    div = divConfirm;
+
+    divConfirm.style.display = 'block';
+}
+
+function confirmRetirada() {
+    if (ipt.value === id) {
+        console.log(`${ipt.value} / ${id}`)
+        alert(`Valor informado divergente da base.`);
+        div.style.display = 'none';
+        return false;
+    }
+    console.log(`${ipt.value} / ${id}`)
+
+    retirarPedido(globalClient); // Usando 'globalClient' em vez de 'client'
+    alert('Pedido Retirado com sucesso!');
+    div.style.display = 'none'; 
+    return true;   
+}
 
 function abrirLS(chave) {
     let ls = JSON.parse(localStorage.getItem(chave) || '[]');
@@ -97,6 +123,6 @@ function salvarLS(chave, item) {
     console.log('Item atribuído ao Local Storage com sucesso.');
 }
 
-setInterval(filaDePedidos, 400); 
+setInterval(filaDePedidos, 400);
 fillParamsList();
 filaDePedidos();

@@ -25,7 +25,12 @@
     </header>
 
     <main>
-
+        <div class="alerta">
+            <h3>Digite o número do pedido para confirmar a retirada.</h3>
+            <p>(Somente números)</p>
+            <input type="text" name="confirm-id-pedido" id="confirm-id">
+            <button onclick="confirmRetirada()">Retirar</button>
+        </div>
 
         <div style="display: flex;flex-direction: row;">
             <button id="main-button" class="btn" onclick="finalizarFilaDePedidos()">Finalizar fila de pedidos</button>
