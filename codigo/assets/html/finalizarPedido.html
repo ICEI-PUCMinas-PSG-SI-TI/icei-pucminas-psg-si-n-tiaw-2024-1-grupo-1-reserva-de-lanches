@@ -105,60 +105,177 @@
 
   <script>
     let cart = []
-    fillCartList()
-    function fillCartList() {
+    let itemsPedido = []
+    let order = []
+    let loggedInUser = []
+
+
+    // Mostrar os itens do pedido ao carregar a página
+    document.addEventListener('DOMContentLoaded', function () {
+      mostrarPedido();
+      fillParamsList();
+    });
+  
+    //0. Preenche as var globais presentes no session storage
+    function fillParamsList() {
+      loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser')) || null;
       cart = JSON.parse(sessionStorage.getItem('cart')) || []
-      console.log(cart)
+    }
+    // 1. Responsável por atualizar o total do carrinho na interface
+    function atualizarTotalCarrinho(totalItems) {
+      const totalCart = document.getElementById('total');
+      totalCart.textContent = `R$ ${totalItems.toFixed(2)}`;
     }
 
+    // 2. Cria um elemento div para representar um item no pedido
+    function criarItemDiv(item, index) {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'pedido-item';
+      itemDiv.innerHTML = `<span class="item-nome">${item.descricao}<input type="number" class="quantity-input" value="1" min="0" max="${item.estoque}"></span><span class="item-total">R$ ${item.preco.toFixed(2)}</span>`;
+      return itemDiv;
+    }
+
+    // 3. Adiciona um elemento div de item ao pedido na interface
+    function adicionarItemAoPedido(itemDiv, pedidoLista) {
+      pedidoLista.appendChild(itemDiv);
+    }
+
+    // 4. Atualiza o total do item e adiciona um event listener ao campo de quantidade
+    function atualizarItemTotal(item, itemDiv, totalItems, index) {
+      const quantityInput = itemDiv.querySelector('.quantity-input');
+      const itemTotalSpan = itemDiv.querySelector('.item-total');
+      let totalItem = item.preco;
+
+      quantityInput.addEventListener('change', function () {
+        const quantidade = parseInt(quantityInput.value, 10);
+        const precoFinal = item.preco * quantidade;
+
+        totalItems = totalItems - totalItem + precoFinal;
+        totalItem = precoFinal;
+
+        atualizarTotalCarrinho(totalItems);
+        itemTotalSpan.textContent = `R$ ${precoFinal.toFixed(2)}`;
+
+        if (precoFinal === 0) {
+          itemDiv.remove();
+          removerItemDoSessionStorage(index);
+        }
+      });
+
+      return totalItems;
+    }
+
+    // 5. Remove um item do sessionStorage com base no índice fornecido
+    function removerItemDoSessionStorage(index) {
+      let cart = JSON.parse(sessionStorage.getItem('cart'));
+      cart.splice(index, 1);
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Função principal que monta o pedido na interface
     function mostrarPedido() {
       const pedidoLista = document.getElementById('pedido-lista');
-      const totalCart = document.getElementById('total');
-      totalItems = 0
+      let totalItems = 0;
+      let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
-      cart.forEach(item => {
-        let totalItem = item.preco;
+      cart.forEach((item, index) => {
 
-        totalItems = totalItems + totalItem
+        totalItems += item.preco;
 
-        totalCart.textContent = `${totalItems}`
+        const itemDiv = criarItemDiv(item, index);
 
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'pedido-item';
-        itemDiv.innerHTML = `<span>${item.descricao}<input type="number" class="quantity-input" value="1" min="1" max="${item.estoque}"></span><span class="item-total">R$ ${totalItem.toFixed(2)}</span>`;
-        pedidoLista.appendChild(itemDiv);
+        adicionarItemAoPedido(itemDiv, pedidoLista);
 
-        const quantityInput = itemDiv.querySelector('.quantity-input');
-        const itemTotalSpan = itemDiv.querySelector('.item-total');
-        const totalProduto = itemDiv.querySelector('.item-total');
-
-        quantityInput.addEventListener('change', function () {
-
-          const quantidade = parseInt(quantityInput.value, 10);
-          const precoFinal = item.preco * quantidade;
-
-          totalItems = totalItems - totalItem + precoFinal;
-          totalItem = precoFinal;
-
-          totalCart.textContent = `R$ ${totalItems.toFixed(2)}`;
-          itemTotalSpan.textContent = `R$ ${precoFinal.toFixed(2)}`;
-
-        })
+        totalItems = atualizarItemTotal(item, itemDiv, totalItems, index);
       });
+
+      atualizarTotalCarrinho(totalItems);
     }
 
-    function finalizarPedido() {
+
+    // Função para verificar se o usuário está logado
+    function verificarLogin() {
+
+      if (!loggedInUser) {
+        alert('Você precisa realizar login para finalizar pedidos.');
+
+        // window.location.href = 'login.html';
+        return false;
+      }
+
+      console.log(loggedInUser);
+      return true;
+    }
+
+    // Função para criar a lista de pedidos finalizada
+    function listarItensPedido() {
+      let items = document.querySelectorAll('.pedido-item');
+      items.forEach(item => {
+        let descricao = item.querySelector('.item-nome').textContent.trim();
+        let totalItem = item.querySelector('.item-total').textContent.trim();
+        let quantidade = item.querySelector('.quantity-input').value;
+
+        item = {
+          nome: descricao,
+          qtd: quantidade,
+          total: totalItem
+        }
+
+        order.push(item)
+        console.log(order)
+
+      });
+      setPedido(order)
+
+    }
+
+    // Função para gerar e exibir o número de pedido
+    function exibirNumeroPedido() {
       const pedidoIdDiv = document.getElementById('pedido-id');
       const pedidoId = 'ID-' + Math.floor(Math.random() * 1000000);
       pedidoIdDiv.innerHTML = `Seu número de pedido é: <strong>${pedidoId}</strong>`;
+    }
+
+    // Recebe e salva o pedido e atribui ao usuário
+    function setPedido(lista) {
+
+      if (loggedInUser[0].accessType !== 'student') {
+        console.log(`Usuário não tem permissão para realizar ação! ${loggedInUser[0].accessType}`)
+        // window.location.href = 'login.html';
+        return
+      }
+
+      pedido = {
+        cliente: loggedInUser[0].email,
+        status: 'pendente',
+        items: order
+      }
+
+      let pedidoFinal = JSON.parse(localStorage.getItem('pedidos')) || []
+      pedidoFinal.push(pedido)
+
+      console.log('pedido final: ')
+      console.log(pedidoFinal)
+
+      localStorage.setItem('pedidos', JSON.stringify(pedidoFinal))
+    }
+
+    // Função principal para finalizar o pedido
+    function finalizarPedido() {
+      // Verifica se o usuário está logado
+      if (!verificarLogin()) {
+        return;
+      }
+      // Exibe os itens do pedido
+      listarItensPedido();
+      // Gera e exibe o número de pedido
+      exibirNumeroPedido();
     }
 
     function visualizarStatusPedido() {
       // Função vazia, sem exibir mensagem
     }
 
-    // Mostrar os itens do pedido ao carregar a página
-    document.addEventListener('DOMContentLoaded', mostrarPedido);
   </script>
 
 </body>
