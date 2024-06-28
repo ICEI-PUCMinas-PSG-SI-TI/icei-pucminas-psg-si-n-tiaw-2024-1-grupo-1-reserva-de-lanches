@@ -98,9 +98,8 @@
     <h2>Finalizar Pedido</h2>
     <div id="pedido-lista"></div>
     <div class="total" id="total"></div>
-    <button class="finalizar-btn" onclick="finalizarPedido()">Finalizar Pedido</button>
+    <button class="finalizar-btn" onclick="finalizarPedido(this)">Finalizar Pedido</button>
     <div class="pedido-id" id="pedido-id"></div>
-    <button class="button-small" onclick="visualizarStatusPedido()">Visualizar Status do Pedido</button>
   </div>
 
   <script>
@@ -108,6 +107,7 @@
     let itemsPedido = []
     let order = []
     let loggedInUser = []
+    let pedidoId
 
 
     // Mostrar os itens do pedido ao carregar a página
@@ -195,15 +195,24 @@
 
     // Função para verificar se o usuário está logado
     function verificarLogin() {
+      // Handles
+      if (loggedInUser[0].accessType !== 'student') {
+        console.log(`Usuário não tem permissão para realizar ação! ${loggedInUser[0].accessType}`)
+        window.location.href = 'login.html';
+        return false
+      }
 
+      let cart0 = JSON.parse(sessionStorage.getItem('cart'))
+      if(!cart0){
+        alert('Carrinho vazio')
+        return false
+      }
       if (!loggedInUser) {
         alert('Você precisa realizar login para finalizar pedidos.');
-
-        // window.location.href = 'login.html';
+        window.location.href = 'login.html';
         return false;
       }
 
-      console.log(loggedInUser);
       return true;
     }
 
@@ -230,33 +239,24 @@
     }
 
     // Função para gerar e exibir o número de pedido
-    function exibirNumeroPedido() {
+    function exibirNumeroPedido(obj) {
+      pedidoId = `ID-${Math.floor(Math.random() * 1000000)}` ;
+
       const pedidoIdDiv = document.getElementById('pedido-id');
-      const pedidoId = 'ID-' + Math.floor(Math.random() * 1000000);
       pedidoIdDiv.innerHTML = `Seu número de pedido é: <strong>${pedidoId}</strong>`;
+      obj.style.display = 'none'
     }
 
     // Recebe e salva o pedido e atribui ao usuário
     function setPedido(lista) {
 
-      // Handles
-      if (loggedInUser[0].accessType !== 'student') {
-        console.log(`Usuário não tem permissão para realizar ação! ${loggedInUser[0].accessType}`)
-        // window.location.href = 'login.html';
-        return
-      }
-
-      let cart0 = JSON.parse(sessionStorage.getItem('cart'))
-      if(!cart0){
-        alert('Carrinho vazio')
-        return
-      }
-
       pedido = {
+        id : pedidoId,
         cliente: loggedInUser[0].email,
         status: 'pendente',
         items: order
       }
+      console.log(`id: ${pedidoId}`)
 
       let pedidoFinal = JSON.parse(localStorage.getItem('pedidos')) || []
       pedidoFinal.push(pedido)
@@ -269,19 +269,17 @@
     }
 
     // Função principal para finalizar o pedido
-    function finalizarPedido() {
-      // Verifica se o usuário está logado
+    function finalizarPedido(obj) {
+
       if (!verificarLogin()) {
         return;
       }
+
+      // Gera e exibe o número de pedido
+      exibirNumeroPedido(obj);
       // Exibe os itens do pedido
       listarItensPedido();
-      // Gera e exibe o número de pedido
-      exibirNumeroPedido();
-    }
-
-    function visualizarStatusPedido() {
-      // Função vazia, sem exibir mensagem
+      
     }
 
   </script>

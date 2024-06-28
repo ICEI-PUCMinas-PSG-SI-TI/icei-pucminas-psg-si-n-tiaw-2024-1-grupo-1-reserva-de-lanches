@@ -35,7 +35,7 @@ function retirarPedido(clienteEmail) {
 
 function finalizarFilaDePedidos() {
     comprasEncerradas = abrirLS('pedidos')
-    if(!comprasEncerradas){
+    if(comprasEncerradas.length < 1){
         alert('Não há pedidos na fila.')
         return
     }
