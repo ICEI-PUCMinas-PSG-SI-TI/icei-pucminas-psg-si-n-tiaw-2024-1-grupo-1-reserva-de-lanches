@@ -239,9 +239,16 @@
     // Recebe e salva o pedido e atribui ao usuário
     function setPedido(lista) {
 
+      // Handles
       if (loggedInUser[0].accessType !== 'student') {
         console.log(`Usuário não tem permissão para realizar ação! ${loggedInUser[0].accessType}`)
         // window.location.href = 'login.html';
+        return
+      }
+
+      let cart0 = JSON.parse(sessionStorage.getItem('cart'))
+      if(!cart0){
+        alert('Carrinho vazio')
         return
       }
 
@@ -258,6 +265,7 @@
       console.log(pedidoFinal)
 
       localStorage.setItem('pedidos', JSON.stringify(pedidoFinal))
+      sessionStorage.removeItem('cart')
     }
 
     // Função principal para finalizar o pedido
