@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Finalizar Pedido</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+
     .container {
       max-width: 600px;
       margin: 0 auto;
@@ -18,13 +20,16 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     h2 {
       background-color: #B55904;
       text-align: center;
-      color: black; /* Alterado para preto */
+      color: black;
+      /* Alterado para preto */
       padding: 10px;
       border-radius: 5px;
     }
+
     .pedido-item {
       display: flex;
       justify-content: space-between;
@@ -32,14 +37,17 @@
       padding: 10px;
       border-bottom: 1px solid #ccc;
     }
+
     .pedido-item:last-child {
       border-bottom: none;
     }
+
     .total {
       text-align: right;
       margin-top: 20px;
       font-weight: bold;
     }
+
     .finalizar-btn {
       display: block;
       width: 100%;
@@ -52,87 +60,107 @@
       cursor: pointer;
       margin-top: 20px;
     }
+
     .finalizar-btn:hover {
       background-color: #218838;
     }
+
     .pedido-id {
       text-align: center;
       margin-top: 20px;
       font-size: 18px;
     }
+
     .button-small {
       display: block;
       margin: 10px auto;
       padding: 5px 10px;
       font-size: 12px;
-      background-color: #B55904; /* Alterado para a cor desejada */
-      color: black; /* Alterado para preto */
+      background-color: #B55904;
+      /* Alterado para a cor desejada */
+      color: black;
+      /* Alterado para preto */
       border: none;
       border-radius: 4px;
       cursor: pointer;
     }
+
     .button-small:hover {
-      background-color: #924702; /* Um tom mais escuro para o hover */
+      background-color: #924702;
+      /* Um tom mais escuro para o hover */
     }
   </style>
 </head>
+
 <body>
 
-<div class="container">
-  <h2>Finalizar Pedido</h2>
-  <div id="pedido-lista"></div>
-  <div class="total" id="total"></div>
-  <button class="finalizar-btn" onclick="finalizarPedido()">Finalizar Pedido</button>
-  <div class="pedido-id" id="pedido-id"></div>
-  <button class="button-small" onclick="visualizarStatusPedido()">Visualizar Status do Pedido</button>
-</div>
+  <div class="container">
+    <h2>Finalizar Pedido</h2>
+    <div id="pedido-lista"></div>
+    <div class="total" id="total"></div>
+    <button class="finalizar-btn" onclick="finalizarPedido()">Finalizar Pedido</button>
+    <div class="pedido-id" id="pedido-id"></div>
+    <button class="button-small" onclick="visualizarStatusPedido()">Visualizar Status do Pedido</button>
+  </div>
 
-<script>
-  let cart = []
-  const dadosPedido = {
-    "cliente": "João Silva",
-    "pedido": [
-      {"item": "Hamburguer", "quantidade": 1, "preco": 12.00},
-      {"item": "Coxinha", "quantidade": 1, "preco": 7.50},
-      {"item": "Refrigerante", "quantidade": 1, "preco": 6.00}
-    ]
-  };
-  fillCartList()
-  function fillCartList(){
-    cart = JSON.parse(sessionStorage.getItem('cart')) || []
-    console.log(cart)
-  }
+  <script>
+    let cart = []
+    fillCartList()
+    function fillCartList() {
+      cart = JSON.parse(sessionStorage.getItem('cart')) || []
+      console.log(cart)
+    }
 
-  function mostrarPedido() {
-    const pedidoLista = document.getElementById('pedido-lista');
-    const totalDiv = document.getElementById('total');
-    let total = 0;
+    function mostrarPedido() {
+      const pedidoLista = document.getElementById('pedido-lista');
+      const totalCart = document.getElementById('total');
+      totalItems = 0
 
-    dadosPedido.pedido.forEach(item => {
-      const itemTotal = item.quantidade * item.preco;
-      total += itemTotal;
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'pedido-item';
-      itemDiv.innerHTML = `<span>${item.item} (x${item.quantidade})</span><span>R$ ${itemTotal.toFixed(2)}</span>`;
-      pedidoLista.appendChild(itemDiv);
-    });
+      cart.forEach(item => {
+        let totalItem = item.preco;
 
-    totalDiv.innerHTML = `Total: R$ ${total.toFixed(2)}`;
-  }
+        totalItems = totalItems + totalItem
 
-  function finalizarPedido() {
-    const pedidoIdDiv = document.getElementById('pedido-id');
-    const pedidoId = 'ID-' + Math.floor(Math.random() * 1000000);
-    pedidoIdDiv.innerHTML = `Seu número de pedido é: <strong>${pedidoId}</strong>`;
-  }
+        totalCart.textContent = `${totalItems}`
 
-  function visualizarStatusPedido() {
-    // Função vazia, sem exibir mensagem
-  }
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'pedido-item';
+        itemDiv.innerHTML = `<span>${item.descricao}<input type="number" class="quantity-input" value="1" min="1" max="${item.estoque}"></span><span class="item-total">R$ ${totalItem.toFixed(2)}</span>`;
+        pedidoLista.appendChild(itemDiv);
 
-  // Mostrar os itens do pedido ao carregar a página
-  document.addEventListener('DOMContentLoaded', mostrarPedido);
-</script>
+        const quantityInput = itemDiv.querySelector('.quantity-input');
+        const itemTotalSpan = itemDiv.querySelector('.item-total');
+        const totalProduto = itemDiv.querySelector('.item-total');
+
+        quantityInput.addEventListener('change', function () {
+
+          const quantidade = parseInt(quantityInput.value, 10);
+          const precoFinal = item.preco * quantidade;
+
+          totalItems = totalItems - totalItem + precoFinal;
+          totalItem = precoFinal;
+
+          totalCart.textContent = `R$ ${totalItems.toFixed(2)}`;
+          itemTotalSpan.textContent = `R$ ${precoFinal.toFixed(2)}`;
+
+        })
+      });
+    }
+
+    function finalizarPedido() {
+      const pedidoIdDiv = document.getElementById('pedido-id');
+      const pedidoId = 'ID-' + Math.floor(Math.random() * 1000000);
+      pedidoIdDiv.innerHTML = `Seu número de pedido é: <strong>${pedidoId}</strong>`;
+    }
+
+    function visualizarStatusPedido() {
+      // Função vazia, sem exibir mensagem
+    }
+
+    // Mostrar os itens do pedido ao carregar a página
+    document.addEventListener('DOMContentLoaded', mostrarPedido);
+  </script>
 
 </body>
+
 </html>
