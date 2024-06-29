@@ -193,15 +193,21 @@
     }
 
 
-    // Função para verificar se o usuário está logado
+    // Função para verificar se o usuário está tudo ok
     function verificarLogin() {
+
+      const loggedInUserData = JSON.parse(sessionStorage.getItem('loggedInUser'));
+      console.log(loggedInUserData[0].accessType)
+
       // Handles
-      if (loggedInUser[0].accessType !== 'student') {
+      if (loggedInUserData[0].accessType === 'employee') {
+        console.log(`${loggedInUserData[0].accessType}/employee`)
         console.log(`Usuário não tem permissão para realizar ação! ${loggedInUser[0].accessType}`)
-        window.location.href = 'login.html';
+       // window.location.href = 'login.html';
         return false
       }
 
+      console.log('')
       let cart0 = JSON.parse(sessionStorage.getItem('cart'))
       if(!cart0){
         alert('Carrinho vazio')
