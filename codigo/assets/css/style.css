@@ -5,26 +5,13 @@ body {
     background-color: #f4f4f4;
   }
   
-  /* .container {
+  .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
   
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  } */
-
-  .tamanho{
-    width: 75%;
-  }
-
-  .tamanho-2{
-    width: 25%;
-  }
-
-  .head{
-    background-color: #B55904;
-
   }
   
   h1 {
@@ -84,16 +71,4 @@ body {
   }
   .filters{
     text-align: center;
-  }
-
-  @media(max-width : 900px){
-    .tamanho{
-      width: 100%;
-    }
-    .tamanho-2{
-      width: 100%;
-    }
-    #menu-items{
-      flex-direction: column!important;
-    }
   }
