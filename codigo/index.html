@@ -4,144 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu da Lanchonete</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+
+
+
+    <link rel="stylesheet" href="./assets/css/globais.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+
+    <title>Document</title>
+
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Menu da Lanchonete</h1>
+    <main>
 
-        <!-- Botões de filtro -->
-        <div class="filters">
-            <button onclick="showCarrinho('assets/html/finalizarPedido.html')">Ver Carrinho</button>
-            <button onclick="filterItems('Doces', 'Bebidas')">Salgados</button>
-            <button onclick="filterItems('Doces', 'Comidas')">Bebidas</button>
-            <button onclick="filterItems('Comidas', 'Bebidas')">Doces</button>
+        <div class="container" id="login">
+
+
+
+            <div class="subcontainer" id="form">
+
+                <div>
+                    <h2 class="tittle">LOGIN</h2>
+                </div>
+
+                <div class="subcontainer" id="float-form">
+                    <input type="text" name="username" id="login-username" placeholder="Email">
+
+                    <input type="password" name="password" id="login-password" placeholder="Senha">
+                    <div>
+                        <input type="checkbox" id="employee-toggle">
+                        <label for="employee-toggle" style="font-size: 12px; font-weight: 400;">Funcionário?</label>
+                    </div>
+                </div>
+
+
+                <div>
+                    <button class="btn" id="login-button" onclick="validarLogin()">Logar</button>
+                </div>
+
+                <div>
+                    <p class="text">Ainda não tem conta?
+                        <a class="link" href="./assets/html/register.html">Cadastre-se</a>
+                    </p>
+                </div>
+
+            </div>
         </div>
-        <div></div>
-        <!-- Itens do menu -->
-        <div id="menu-items">
-            <h2>Comidas</h2>
-            <div class="menu-category items-cards" id="Comidas"></div>
 
-            <script>
-                let db = []
-                let hasAnyProdInCart = false
+    </main>
 
-                fillDbProducts();
-                console.log(db)
-                fillProductsCards();
+    <script>
 
-                function showCarrinho(url) {
-                    if(hasAnyProdInCart){
-                        window.location.href = url;
-                    }else{
-                        alert('carrinho vazio')
+        const loginEmail = document.getElementById('login-username');
+        const loginPassword = document.getElementById('login-password');
+
+        const employeeToggle = document.getElementById('employee-toggle');
+
+        let isEmployee = false;
+
+        function validarLogin() {
+            let list = ""
+            let address = ""
+            let type = ""
+            if(isEmployee){
+                list = 'employeeList'
+                address = "./assets/html/orderQueue.html"
+                type = 'employee'
+            }
+            else{
+                list = 'userList'
+                address = "./assets/html/menu.html"
+                type = 'student'
+            }
+
+            let userList = JSON.parse(localStorage.getItem(list)) || [];
+            let userFound = false;
+
+            for (let user of userList) {
+                if (user.email === loginEmail.value && user.password === loginPassword.value) {
+                    alert(`Redirecionando - ${list} / ${address} ...`);
+
+                    let loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser')) || [];
+                    loggedInUser = [];
+                    let loggedIn = {
+                        email : user.email,
+                        accessType: type
                     }
+                    loggedInUser.push(loggedIn)
+                    sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser))
+
+                    userFound = true;
+                    window.location.href = address;
                 }
+            }
+            if (!userFound) {
+                alert('Usuário não encontrado. LOGIN')
+            }
+        }
 
-                function filterItems(hidde1, hidde2) {
-                    let parent = document.querySelector('.items-cards')
-                    let childrenArray = Array.from(parent.children)
+        employeeToggle.addEventListener('change', () => {
+            if (employeeToggle.checked) {
+                isEmployee = true;
+            } else {
+                isEmployee = false;
+            }
+        });
 
-                    childrenArray.forEach(o => {
-                        if (!o.classList.contains(hidde1) && !o.classList.contains(hidde2) || o.classList.contains('hidden')) {
-                            o.classList.remove('hidden')
-                        }
-                        else {
-                            o.classList.add('hidden')
-                        }
-                    })
-                }
-
-                function fillProductsCards() {
-                    let divMenu = document.querySelector('.items-cards')
-
-                    db.forEach(o => {
-                        divMenu.appendChild(createCards(o))
-                    })
-                }
-
-                function createCards(data) {
-                    let div = document.createElement('div');
-                    div.classList.add('menu-item');
-                    div.classList.add(`${data.tipo}`)
-                    div.classList.add(data.tipo);
-                    div.id = `${data.id}`;
-                    div.innerHTML = `
-                        <img src="${data.img}" alt="Enrolado de Salsicha">
-                        <div class="menu-item-content">
-                            <h2>${data.descricao}</h2>
-                            <p>Valor: R$ ${data.preco}</p>
-                        </div>
-                        <button class="add-to-cart-btn">Adicionar ao carrinho</button>
-                    `;
-
-                    let addToCartButton = div.querySelector('.add-to-cart-btn');
-                    addToCartButton.addEventListener('click', function () {
-                        addToCart(div.id);
-                    });
-                    return div;
-                }
-
-                function addToCart(productId) {
-                    let id = parseInt(productId)
-                    let product = db.find(o => o.id === id);
-
-                    if (product) {
-                        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-
-                        cart.push(product);
-                        if(cart.length > 0){
-                            hasAnyProdInCart = true;
-                        }else{
-                            hasAnyProdInCart = false;
-                        }
-                        sessionStorage.setItem('cart', JSON.stringify(cart));
-
-                        console.log(`Product ID ${productId} added to cart`);
-                    } else {
-                        console.log(`Product ID ${productId} not found`);
-                    }
-                }
-
-                function fillDbProducts() {
-                    let data = JSON.parse(localStorage.getItem('dbProdutos')) || [];
-
-                    db = data.items;
-                }
-
-                function calculateTotal() {
-                    let total = 0;
-                    const items = document.querySelectorAll('.menu-item-content');
-                    items.forEach(item => {
-                        const price = parseFloat(item.querySelector('p').textContent.replace('Valor: R$', '').trim());
-                        const quantity = parseInt(item.querySelector('select').value);
-                        total += price * quantity;
-                    });
-                    return total;
-                }
-
-                function showSummary() {
-                    const summary = document.getElementById('order-summary');
-                    let orderSummary = "Resumo do Pedido:\n";
-                    const items = document.querySelectorAll('.menu-item-content');
-                    items.forEach(item => {
-                        const itemName = item.querySelector('h2').textContent;
-                        const quantity = parseInt(item.querySelector('select').value);
-                        if (quantity > 0) {
-                            orderSummary += `${itemName}: ${quantity}x\n`;
-                        }
-                    });
-                    summary.textContent = orderSummary;
-
-                    const totalPrice = calculateTotal();
-                    document.getElementById('total-price').textContent = `Total: R$${totalPrice.toFixed(2)}`;
-                }
-
-            </script>
-
+    </script>
 </body>
 
 </html>

@@ -37,7 +37,7 @@ function validarCadastro() {
 
                 successWarning.style.display = 'block';
 
-                window.location.href = "../../assets/html/login.html";
+                window.location.href = "../../../index.html";
 
             }
             else {
