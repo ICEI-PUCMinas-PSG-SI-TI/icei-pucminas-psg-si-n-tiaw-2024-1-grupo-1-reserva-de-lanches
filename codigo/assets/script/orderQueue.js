@@ -47,7 +47,7 @@ function finalizarFilaDePedidos() {
     })
 
     salvarLS('compras-encerradas', comprasEncerradas)
-    salvarLS('pedidos', comprasPendentes);
+    //salvarLS('pedidos', comprasPendentes);
 
     filaDePedidos();
 }
