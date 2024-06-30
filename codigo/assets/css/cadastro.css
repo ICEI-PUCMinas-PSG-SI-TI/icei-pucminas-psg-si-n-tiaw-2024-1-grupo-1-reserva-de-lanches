@@ -5,19 +5,19 @@ body {
     background-color: #f4f4f4;
 }
 
-.container {
+/* .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
+} */
+/* 
 h1 {
     text-align: center;
     background-color: #B55904;
 
-}
+} */
 
 h2 {
     color: #F47906;
@@ -114,7 +114,7 @@ h3 {
 
 .menu-item-button-file {
     color: transparent;
-    max-width: 120px;
+    /* max-width: 120px; */
     transform: scale(1, 1.1);
     /* display: block; */ 
 }
