@@ -9,7 +9,7 @@ let dbMock = {
             descricao: 'Sanduíche Natural',
             preco: 6.50,
             estoque: 5,
-            img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg"'
+            img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg'
         },
         {
             id: 2,
@@ -196,7 +196,7 @@ function loadProducts() {
 
     let strHTML = '';
 
-    for (let i = 0; i < dbProdutos.length; i++) { //dbProdutos.items.length
+    for (let i = 0; i < dbProdutos.tipo.length; i++) { //dbProdutos.items.length
 
         strHTML += `<h2>${dbProdutos.tipo[i]}</h2>`
         strHTML += '\n';

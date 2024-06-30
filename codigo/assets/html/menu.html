@@ -31,18 +31,15 @@
     <div class="container mt-3">
      
 
-        <!-- Botões de filtro -->
-        <div class="filters">
-            <button onclick="filterItems('Comidas')">Comidas</button>
-            <button onclick="filterItems('Bebidas')">Bebidas</button>
-        </div>
+      
+       
 
         <!-- Itens do menu -->
         <div id="menu-items" class="d-flex mb-5">
             <div class="itens d-flex flex-column tamanho">
-                <h2>Comidas</h2>
-                <div class="menu-category" id="Comidas">
-                    <div class="menu-item d-flex">
+                <h2>Produtos</h2>
+                <div class="menu-category" id="Produtos">
+                    <!-- <div class="menu-item d-flex">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg"
                             alt="Sanduíche Natural">
                         <div class="d-flex flex-wrap justify-content-between w-100">
@@ -57,249 +54,13 @@
     
                             </div>
                         </div>
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://th.bing.com/th/id/R.8195acd4602f690432d2219418cef287?rik=1DUVRcQMjv0K9g&riu=http%3a%2f%2freceitas.net%2fwp-content%2fuploads%2f2017%2f10%2fcoxinha-de-frango-1024x695.jpg&ehk=hNBqU7g3n9XkMWhlGLFgHln5G7kTWtZvPdLMTD3gY0s%3d&risl=&pid=ImgRaw&r=0"
-                            alt="Coxinha">
-                       <div class="d-flex flex-wrap justify-content-between w-100">
-                            <div class="menu-item-content">
-                                <h2>Coxinha</h2>
-                                <p>Valor: R$6,50</p>
-                            </div>
-                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Coxinha">Add to Cart</button>
-                            </div>
-                       </div>
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://2.bp.blogspot.com/-hEHgTOrhKSk/T41V5A6v1nI/AAAAAAAAACk/2VECbSy0__M/s1600/empada.jpg"
-                            alt="Empada">
-                        <div class="d-flex flex-wrap justify-content-between w-100">
-                            <div class="menu-item-content">
-                                <h2>Empada</h2>
-                                <p>Valor: R$6,50</p>
-    
-                            </div>
-                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Empada">Add to Cart</button>
-    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRhbL3UnDr7fe6-A6_msYI-Qo8UtHtO1xrQ&s"
-                            alt="Pão de Queijo">
-                       <div class="d-flex flex-wrap justify-content-between w-100">
-                            <div class="menu-item-content">
-                                <h2>Pão de Queijo</h2>
-                                <p>Valor: R$3,00</p>
-                            </div>
-                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                <button type="button" class="btn btn-dark addCarrinho"  valor="3.00" nome="Pão de Queijo">Add to
-                                    Cart</button>
+                    </div> -->
+                  
 
-                            </div>
-                       </div>
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbaV-12-rJkimIgGe20CPLUxxAoGGNcrRAYQ&s"
-                            alt="Pão de Queijo Recheado">
-                        <div class="d-flex flex-wrap justify-content-between w-100">
-                            <div class="menu-item-content">
-                                <h2>Pão de Queijo Recheado</h2>
-                                <p>Valor: R$5,00</p>
-    
-                            </div>
-                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                <button type="button" class="btn btn-dark addCarrinho"  valor="5.00" nome="Pão de Queijo Recheado">Add
-                                    to Cart</button>
-    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7cmen4IT5oFYEmneiSOE8drNZZsS7mhrBMA&s"
-                            alt="Pastel Assado">
-                            <div class="d-flex flex-wrap justify-content-between w-100">
-                                <div class="menu-item-content">
-                                    <h2>Pastel Assado</h2>
-                                    <p>Valor: R$6,50</p>
-        
-                                </div>
-                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Pastel Assado">Add to
-                                        Cart</button>
-        
-                                </div>
-                            </div>
-                        
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://i.ytimg.com/vi/-STkr9JS6pA/mqdefault.jpg" alt="Hamburgão">
-                        <div class="d-flex flex-wrap justify-content-between w-100">
-                            <div class="menu-item-content">
-                                <h2>Hamburgão</h2>
-                                <p>Valor: R$8,00</p>
-    
-                            </div>
-                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                <button type="button" class="btn btn-dark addCarrinho"  valor="8.00" nome="Hamburgão">Add to
-                                    Cart</button>
-    
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VcQ7tDl4pJIFLC942txDBjoZyKBgQ7PRLHSZjgA7ZmahUjorEwAgjI-TAOEDvMOlLRQ&usqp=CAU"
-                            alt="Enrolado de Presunto e Queijo">
-                            <div class="d-flex flex-wrap justify-content-between w-100">
-                                <div class="menu-item-content">
-                                    <h2>Enrolado de Presunto e Queijo</h2>
-                                    <p>Valor: R$6,50</p>
-        
-                                </div>
-                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50"
-                                        nome="Enrolado de Presunto e Queijo">Add to Cart</button>
-        
-                                </div>
-                            </div>
-                       
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKn_3-QE63FNtqQuejcM5artPx_UJ1YaKeA&s"
-                            alt="Enrolado de Salsicha">
-                            <div class="d-flex flex-wrap justify-content-between w-100">
-                                <div class="menu-item-content">
-                                    <h2>Enrolado de Salsicha</h2>
-                                    <p>Valor: R$6,50 </p>
-        
-                                </div>
-                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                    <button type="button" class="btn btn-dark addCarrinho"  valor="6.50" nome="Enrolado de Salsicha">Add to
-                                        Cart</button>
-        
-                                </div>
-                            </div>
-                        
-                    </div>
-                    <div class="menu-item d-flex">
-                        <img src="https://www.perdigao.com.br/assets/_images/654bfd759bf743d8e6e420cd097f94745da24bc7.png"
-                            alt="Hambúrguer">
-                            <div class="d-flex flex-wrap justify-content-between w-100">
-                                <div class="menu-item-content">
-                                    <h2>Hambúrguer</h2>
-                                    <p>Valor: R$12,00 </p>
-        
-                                </div>
-                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                    <button type="button" class="btn btn-dark addCarrinho"  valor="12.00" nome="Hambúrguer">Add to
-                                        Cart</button>
-        
-                                </div>
-                            </div>
-                       
-                    </div>
                 </div>
-
-
-                <h2>Bebidas</h2>
-                <div class="menu-category" id="Bebidas">
-                    
-                        <div class="menu-item d-flex">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmycCQRo4JsPvVyFKqQBk0pmD9LWsP1pKu9w&s"
-                                alt="Refrigerantes">
-                                <div class="d-flex flex-wrap justify-content-between w-100">
-                                    <div class="menu-item-content">
-                                        <h2>Refrigerantes</h2>
-                                        <p>Valor: R$6,00 </p>
-                                       
-                                    </div>
-                                    <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                        <button type="button" class="btn btn-dark addCarrinho"  valor="6.00"
-                                            nome="Refrigerantes">Add to Cart</button>
-            
-                                    </div>
-                                </div>
-                            
-                        </div>
-
-                            <div class="menu-item d-flex">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0-69gl2VtvQSUA9AouJHYi1uWL7YNL527Q&s"
-                                    alt="Sucos">
-                                    <div class="d-flex flex-wrap justify-content-between w-100">
-                                        <div class="menu-item-content">
-                                            <h2>Sucos</h2>
-                                            <p>Valor: R$6,50 </p>
-        
-                                        </div>
-        
-                                        <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                            <button type="button" class="btn btn-dark addCarrinho"  valor="6.50"
-                                                nome="Sucos">Add to Cart</button>
-                
-                                        </div>
-                                    </div>
-                               
-                            </div>
-                            <div class="menu-item d-flex">
-                                <img src="https://www.guiadasemana.com.br/contentFiles/image/2019/05/FEA/galeria/52849_w840h525_1558996048shutterstock-1237794556.jpg"
-                                    alt="Vitaminas">
-                                    <div class="d-flex flex-wrap justify-content-between w-100">
-                                        <div class="menu-item-content">
-                                            <h2>Vitaminas-Açaí</h2>
-                                            <p>Valor: R$7,50 </p>
-        
-                                        </div>
-                                        <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                            <button type="button" class="btn btn-dark addCarrinho"  valor="7.50"
-                                                nome="Vitaminas de Açai">Add to Cart</button>
-                
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                                <div class="menu-item d-flex">
-                                    <img src="https://abir.org.br/abir/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-30-at-15.26.58.jpeg"
-                                        alt="Água">
-                                        <div class="d-flex flex-wrap justify-content-between w-100">
-                                            <div class="menu-item-content">
-                                                <h2>Água</h2>
-                                                <p>Valor: R$4,50 </p>
-        
-                                            </div>
-                                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                                <button type="button" class="btn btn-dark addCarrinho"  valor="4.50"
-                                                    nome="Água">Add to Cart</button>
-                    
-                                            </div>
-                                        </div>
-                                    
-                                </div>
-                                    <div class="menu-item d-flex">
-                                        <img src="https://th.bing.com/th?id=OSK.HEROdcF23LjpLGIEo4Lk0MYDJrEZ9euas7qCH_jaxJniP-4&w=384&h=228&c=13&rs=2&o=6&pid=SANGAM"
-                                            alt="Energetico">
-                                            <div class="d-flex flex-wrap justify-content-between w-100">
-                                                <div class="menu-item-content">
-                                                    <h2>Energetico</h2>
-                                                    <p>Valor: R$12,00 </p>
-        
-                                                </div>
-                                                <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5">
-                                                    <button type="button" class="btn btn-dark addCarrinho"  valor="12.00"
-                                                        nome="Energético">Add to Cart</button>
-                        
-                                                </div>
-                                            </div>
-                                        
-                                            
-                                    </div>
-
-                                </div>
                            
                            
-                        </div>
+            </div>
                 <!-- Seção do carrinho -->
                 <div class="cart d-flex flex-column tamanho-2 ps-3">
                     <div class="sticky-top">
@@ -326,8 +87,217 @@
                     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
                     <script>
                         //cria o carrinho
+                       
+
+
+                        let dbMock = {
+                            tipo: ['Comidas', 'Bebidas', 'Doces'],
+                            proximoID: 20,
+                            items: [
+                                {
+                                    id: 1,
+                                    tipo: 'Comidas',
+                                    descricao: 'Sanduíche Natural',
+                                    preco: 6.50,
+                                    estoque: 5,
+                                    img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkoNbV9SkABi_6ZnMjxIiqKDdvyI7hNpewpmvezY_WAHgIa18cSYI9-iEFKPEA5Gab_eIEXjoWZX1hid6SsGLsU57IsfdVzT3xi7oBIarwUFLMJ4R4D7vfCvKh_UG5dIC1PNa_MSplPVdvO0VLqeIVmFTd82YZuKExqtBk8wF6Yv79NBRbvTzsXFed/s2000/receita-de-sandu%C3%ADche-natural-light.jpg'
+                                },
+                                {
+                                    id: 2,
+                                    tipo: 'Comidas',
+                                    descricao: 'Coxinha',
+                                    preco: 6.50,
+                                    estoque: 15,
+                                    img: 'https://th.bing.com/th/id/R.8195acd4602f690432d2219418cef287?rik=1DUVRcQMjv0K9g&riu=http%3a%2f%2freceitas.net%2fwp-content%2fuploads%2f2017%2f10%2fcoxinha-de-frango-1024x695.jpg&ehk=hNBqU7g3n9XkMWhlGLFgHln5G7kTWtZvPdLMTD3gY0s%3d&risl=&pid=ImgRaw&r=0'
+                                },
+                                {
+                                    id: 3,
+                                    tipo: 'Comidas',
+                                    descricao: 'Empada',
+                                    preco: 6.50,
+                                    estoque: 10,
+                                    img: 'https://2.bp.blogspot.com/-hEHgTOrhKSk/T41V5A6v1nI/AAAAAAAAACk/2VECbSy0__M/s1600/empada.jpg'
+                                },
+                                {
+                                    id: 4,
+                                    tipo: 'Comidas',
+                                    descricao: 'Pão de Queijo',
+                                    preco: 3.00,
+                                    estoque: 15,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRhbL3UnDr7fe6-A6_msYI-Qo8UtHtO1xrQ&s'
+                                },
+                                {
+                                    id: 5,
+                                    tipo: 'Comidas',
+                                    descricao: 'Pão de Queijo Recheado',
+                                    preco: 5.00,
+                                    estoque: 10,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbaV-12-rJkimIgGe20CPLUxxAoGGNcrRAYQ&s'
+                                },
+                                {
+                                    id: 6,
+                                    tipo: 'Comidas',
+                                    descricao: 'Pastel Assado',
+                                    preco: 6.50,
+                                    estoque: 10,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7cmen4IT5oFYEmneiSOE8drNZZsS7mhrBMA&s'
+                                },
+                                {
+                                    id: 7,
+                                    tipo: 'Comidas',
+                                    descricao: 'Hamburgão',
+                                    preco: 8.00,
+                                    estoque: 5,
+                                    img: 'https://i.ytimg.com/vi/-STkr9JS6pA/mqdefault.jpg'
+                                },
+                                {
+                                    id: 8,
+                                    tipo: 'Comidas',
+                                    descricao: 'Enrolado de Presunto e Queijo',
+                                    preco: 6.50,
+                                    estoque: 10,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0VcQ7tDl4pJIFLC942txDBjoZyKBgQ7PRLHSZjgA7ZmahUjorEwAgjI-TAOEDvMOlLRQ&usqp=CAU'
+                                },
+                                {
+                                    id: 9,
+                                    tipo: 'Comidas',
+                                    descricao: 'Enrolado de Salsicha',
+                                    preco: 6.50,
+                                    estoque: 5,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKn_3-QE63FNtqQuejcM5artPx_UJ1YaKeA&s'
+                                },
+                                {
+                                    id: 10,
+                                    tipo: 'Comidas',
+                                    descricao: 'Hambúrguer',
+                                    preco: 12.00,
+                                    estoque: 5,
+                                    img: 'https://www.perdigao.com.br/assets/_images/654bfd759bf743d8e6e420cd097f94745da24bc7.png'
+                                },
+                                {
+                                    id: 11,
+                                    tipo: 'Comidas',
+                                    descricao: 'Batata Frita',
+                                    preco: 15.00,
+                                    estoque: 5,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5t7mL44se71Kw089vf99YG9_3PYQowHpFdg&s'
+                                },
+                                {
+                                    id: 12,
+                                    tipo: 'Bebidas',
+                                    descricao: 'Refrigerantes',
+                                    preco: 6.00,
+                                    estoque: 30,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmycCQRo4JsPvVyFKqQBk0pmD9LWsP1pKu9w&s'
+                                },
+                                {
+                                    id: 13,
+                                    tipo: 'Bebidas',
+                                    descricao: 'Sucos',
+                                    preco: 6.50,
+                                    estoque: 20,
+                                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0-69gl2VtvQSUA9AouJHYi1uWL7YNL527Q&s'
+                                },
+                                {
+                                    id: 14,
+                                    tipo: 'Bebidas',
+                                    descricao: 'Vitaminas',
+                                    preco: 7.50,
+                                    estoque: 20,
+                                    img: 'https://www.guiadasemana.com.br/contentFiles/image/2019/05/FEA/galeria/52849_w840h525_1558996048shutterstock-1237794556.jpg'
+                                },
+                                {
+                                    id: 15,
+                                    tipo: 'Bebidas',
+                                    descricao: 'Água',
+                                    preco: 4.50,
+                                    estoque: 50,
+                                    img: 'https://abir.org.br/abir/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-30-at-15.26.58.jpeg'
+                                },
+                                {
+                                    id: 16,
+                                    tipo: 'Bebidas',
+                                    descricao: 'Energético',
+                                    preco: 12.00,
+                                    estoque: 15,
+                                    img: 'https://th.bing.com/th?id=OSK.HEROdcF23LjpLGIEo4Lk0MYDJrEZ9euas7qCH_jaxJniP-4&w=384&h=228&c=13&rs=2&o=6&pid=SANGAM'
+                                },
+                                {
+                                    id: 17,
+                                    tipo: 'Doces',
+                                    descricao: 'Bombom',
+                                    preco: 3.00,
+                                    estoque: 50,
+                                    img: 'https://casabrasileira.ch/wp-content/uploads/2020/06/636.jpg'
+                                },
+                                {
+                                    id: 18,
+                                    tipo: 'Doces',
+                                    descricao: 'Balas',
+                                    preco: 0.25,
+                                    estoque: 100,
+                                    img: 'https://www.revistaartesanato.com.br/wp-content/uploads/2019/07/como-montar-mesa-de-doce-5.jpg'
+                                },
+                                {
+                                    id: 19,
+                                    tipo: 'Doces',
+                                    descricao: 'Chicletes',
+                                    preco: 2.50,
+                                    estoque: 50,
+                                    img: 'https://http2.mlstatic.com/D_NQ_NP_2X_941045-MLB31840481365_082019-F.jpg'
+                                },
+                            ]
+                        };
+
+                        let dbProdutos = {};
+
+
+
+
+                        function loadProducts() {
+                            dbProdutos = JSON.parse(localStorage.getItem('dbProdutos'));
+
+                            if (!dbProdutos) {
+                                dbProdutos = dbMock;
+                                localStorage.setItem('dbProdutos', JSON.stringify(dbProdutos));
+                            }
+
+                           let html = ''
+
+                           dbProdutos.items.forEach(produto => {
+                                html += `
+                                    <div class="menu-item d-flex">
+                                        <img src="${produto.img}"
+                                            alt="${produto.descricao}">
+                                        <div class="d-flex flex-wrap justify-content-between w-100">
+                                            <div class="menu-item-content">
+                                                <h2>${produto.descricao}</h2>
+                                                <p class="mb-0">Valor: R$${produto.preco.toFixed(2)}</p>
+                    
+                                            </div>
+                                            <div class="d-flex align-itens-center align-self-center ps-3 mb-2 me-5 ">
+                                                <button type="button" class="btn btn-dark addCarrinho"  valor="${produto.preco}" nome="${produto.descricao}">Add to
+                                                    Cart</button>
+                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                `
+                           })
+
+                           $('#Produtos').html(html)
+
+                           
+
+                            console.log(dbProdutos.items)
+
+                            
+                        }
+
                         var carrinho = [];
                         $(document).ready(function() {
+                            loadProducts()
                          
                             var quantidade = 1;
                             var html = "";
@@ -446,6 +416,7 @@
                                 }
                             });
                         }
+
                     </script>
 
 </body>
