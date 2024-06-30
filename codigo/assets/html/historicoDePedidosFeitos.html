@@ -64,16 +64,18 @@
                 pedidos = [];
             }
 
-            pedidos.forEach(pedido => {
+            for(let i = pedidos.length - 1; i >= 0; i--) {
+                let pedido = pedidos[i];
                 let htmlCarrinho = "";
                 let valorcarrinho = 0;
                 
-                var usuar = JSON.parse(localStorage.getItem('userList'))[0]
+                var usuar = JSON.parse(sessionStorage.getItem('loggedInUser'));
+                // var usuar = JSON.parse(localStorage.getItem('userList'))[0]
 
                 if(pedido.email == usuar.email){
                     pedido.carrinho.forEach(item => {
                         htmlCarrinho += `
-                            <p class='fs-5'>${item.nome} (R$${item.preco.toFixed(2)}) X${item.quantidade}</p>
+                            <p class='fs-5'>#${pedido.id}<br>${item.nome} (R$${item.preco.toFixed(2)}) X${item.quantidade}</p>
                         `;
                         valorcarrinho += item.preco * item.quantidade;
                     });
@@ -96,11 +98,31 @@
                     }
 
                 valorTotal += valorcarrinho;
-            });
+            }
 
             $('#pedidos').html(html);
             $('#total-price').text(`R$${valorTotal.toFixed(2)}`);
+
+            // Recarrega a página toda vez que perceber uma alteração no banco de dados
+            setInterval(atualizarHistorico, 1000);
         });
+
+        function atualizarHistorico() {
+            let updateOrderQueue = JSON.parse(localStorage.getItem('updateOrderQueue'));
+
+            if (!updateOrderQueue) {
+              updateOrderQueue = { reload: false };
+                localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
+            }
+
+            if (updateOrderQueue.reload == true) {
+                // Reseta o Flag
+                updateOrderQueue.reload = false;
+                localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
+                
+                window.open('historicoDePedidosFeitos.html', '_self');
+            }
+        }
 
     </script>
 </body>

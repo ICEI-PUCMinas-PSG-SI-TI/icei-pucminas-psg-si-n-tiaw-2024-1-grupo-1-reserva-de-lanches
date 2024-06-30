@@ -71,7 +71,7 @@
             let type = ""
             if(isEmployee){
                 list = 'employeeList'
-                address = "./assets/html/orderQueue.html"
+                address = './assets/html/orderQueue.html'
                 type = 'employee'
             }
             else{
@@ -87,13 +87,10 @@
                 if (user.email === loginEmail.value && user.password === loginPassword.value) {
                     alert(`Redirecionando - ${list} / ${address} ...`);
 
-                    let loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser')) || [];
-                    loggedInUser = [];
-                    let loggedIn = {
+                    let loggedInUser = {
                         email : user.email,
                         accessType: type
                     }
-                    loggedInUser.push(loggedIn)
                     sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser))
 
                     userFound = true;

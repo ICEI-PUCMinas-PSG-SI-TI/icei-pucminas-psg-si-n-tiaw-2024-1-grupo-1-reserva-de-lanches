@@ -19,7 +19,7 @@ function loadEvents() {
     document.querySelector("#estoque").addEventListener('keyup', stockKeyUp);
 
     document.querySelector("#cancelar").addEventListener('click', function () {
-        window.open("cadastro.html", '_self');
+        window.open("cadastroDeProdutos.html", '_self');
     });
 
     document.querySelector("#confirmar").addEventListener('click', addProduct);
@@ -35,7 +35,7 @@ function loadProduct(productID) {
 
         if (productID == dbProdutos.items[i].id) {
             
-            document.querySelector('#cadastrar').innerText = 'Editar Produto'
+            // document.querySelector('#cadastrar').innerText = 'Editar Produto';
 
             document.querySelector('#editProduct img').src = dbProdutos.items[i].img;
             document.querySelector('#editProduct img').setAttribute('alt', dbProdutos.items[i].descricao);
@@ -87,7 +87,7 @@ function addProduct(e) {
         return;
     }
 
-    // Se os IDs forem iguais, então iseri novo produto. Senão deve atualizar o produto.
+    // Se os IDs forem iguais, então inseri novo produto. Senão deve atualizar o produto.
     if (productID == dbProdutos.proximoID) {
         dbProdutos.items.push(product);
         dbProdutos.proximoID += 1;
@@ -100,7 +100,16 @@ function addProduct(e) {
     }
 
     localStorage.setItem('dbProdutos', JSON.stringify(dbProdutos));
+    
+    // Força o recarregamento dos Menus abertos pelos clientes
+    reloadMenu();
+
     window.open("../html/cadastroDeProdutos.html", '_self');
+}
+
+function reloadMenu() {
+    updateDataBase = { reload: true };
+    localStorage.setItem('updateDataBase', JSON.stringify(updateDataBase));
 }
 
 function getProductIndex(id) {

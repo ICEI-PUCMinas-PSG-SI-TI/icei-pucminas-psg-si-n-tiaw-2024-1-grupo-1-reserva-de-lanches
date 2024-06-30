@@ -240,8 +240,17 @@ function removeProduct(event) {
     if (index != -1) {
         dbProdutos.items.splice(index, 1);
         localStorage.setItem('dbProdutos', JSON.stringify(dbProdutos));
+        
+        // Força o recarregamento dos Menus abertos pelos clientes
+        reloadMenu();
+        
         initRegisterPage();
     }
+}
+
+function reloadMenu() {
+    updateDataBase = { reload: true };
+    localStorage.setItem('updateDataBase', JSON.stringify(updateDataBase));
 }
 
 function getProductIndex(id) {
