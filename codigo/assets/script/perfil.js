@@ -7,8 +7,8 @@ const defaultProfile  = {
     person_id: '123456'
 }; 
 
-  // Função para carregar o perfil do Local Storage
-  function loadProfile() {
+// Função para carregar o perfil do Local Storage
+function loadProfile() {
     let storedProfile = JSON.parse(localStorage.getItem('userList'));
 
     if (storedProfile == null || Object.keys(storedProfile).length === 0) {
@@ -16,7 +16,13 @@ const defaultProfile  = {
         localStorage.setItem('userList', JSON.stringify(defaultProfile));
     }
 
-    fillForm(storedProfile[0]);
+    let usuar = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    for(let i = 0; i < storedProfile.length; i++) {
+        if(storedProfile[i].email == usuar.email) {
+            document.querySelector('#profile-form').setAttribute("data-id", i);
+            fillForm(storedProfile[i]);
+        }
+    }
 
     let html_ul = ""
     // if(storedProfile[0])
@@ -42,19 +48,20 @@ function editProfile() {
     document.getElementById('save-button').style.display = 'inline-block';
 }
 
-
 function saveProfile() {
-    let Profile = JSON.parse(localStorage.getItem('userList'))[0];
-    const updatedProfile =[ {
+    
+    let indice = parseInt(document.querySelector('#profile-form').getAttribute("data-id"));
+    let Profile = JSON.parse(localStorage.getItem('userList'));
+    
+    Profile[indice] = {
         firstName: document.getElementById('name').value,
         lastName: document.getElementById('shift').value,
         email: document.getElementById('email').value,
         password: Profile.password,
         enrollment: document.getElementById('person-id').value
-    }];
-
+    };
   
-    localStorage.setItem('userList', JSON.stringify(updatedProfile));
+    localStorage.setItem('userList', JSON.stringify(Profile));
 
     alert('Perfil salvo com sucesso!');
 
