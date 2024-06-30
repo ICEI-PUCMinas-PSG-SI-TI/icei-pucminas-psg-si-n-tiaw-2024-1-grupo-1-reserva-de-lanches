@@ -209,26 +209,13 @@ $(document).ready(function() {
                 }
             })
         
-            // Recarrega a página toda vez que perceber uma alteração no banco de dados
-            setInterval(atualizarFinalizar, 1000)
+            // Recarrega a página a cada 5 segundos para atualizar o status
+            setInterval(atualizarFinalizar, 5000)
 
         });
 
         function atualizarFinalizar() {
-            let updateOrderQueue = JSON.parse(localStorage.getItem('updateOrderQueue'));
-
-            if (!updateOrderQueue) {
-              updateOrderQueue = { reload: false };
-                localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
-            }
-
-            if (updateOrderQueue.reload == true) {
-                // Reseta o Flag
-                updateOrderQueue.reload = false;
-                localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
-                
-                window.open('historicoDePedidosFeitos.html', '_self');
-            }
+          window.open('finalizarPedido.html', '_self');
         }
   </script>
 

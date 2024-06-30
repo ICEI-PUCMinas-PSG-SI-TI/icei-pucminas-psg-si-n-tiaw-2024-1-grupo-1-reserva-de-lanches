@@ -104,24 +104,11 @@
             $('#total-price').text(`R$${valorTotal.toFixed(2)}`);
 
             // Recarrega a página toda vez que perceber uma alteração no banco de dados
-            setInterval(atualizarHistorico, 1000);
+            setInterval(atualizarHistorico, 5000);
         });
 
         function atualizarHistorico() {
-            let updateOrderQueue = JSON.parse(localStorage.getItem('updateOrderQueue'));
-
-            if (!updateOrderQueue) {
-              updateOrderQueue = { reload: false };
-                localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
-            }
-
-            if (updateOrderQueue.reload == true) {
-                // Reseta o Flag
-                updateOrderQueue.reload = false;
-                localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
-                
-                window.open('historicoDePedidosFeitos.html', '_self');
-            }
+            window.open('historicoDePedidosFeitos.html', '_self');
         }
 
     </script>

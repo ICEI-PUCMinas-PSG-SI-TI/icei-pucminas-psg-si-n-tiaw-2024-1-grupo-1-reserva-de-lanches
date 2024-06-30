@@ -119,13 +119,7 @@
                     pedidos[index] = pedido;
                     
                     localStorage.setItem('pedidos', JSON.stringify(pedidos));
-
-                    // Set um flag para forçar atualização da lista de pedidos
-                    let updateOrderQueue = { reload: true };
-                    localStorage.setItem('updateOrderQueue', JSON.stringify(updateOrderQueue));
-
                     alert('Pedido aprovado e atualizado com sucesso');
-
                     location.reload();
                 } else {
                     alert('Pedido não encontrado');
