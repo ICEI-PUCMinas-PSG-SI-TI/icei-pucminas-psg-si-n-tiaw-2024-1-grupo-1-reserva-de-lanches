@@ -315,7 +315,7 @@
                         //cria o carrinho
                         var carrinho = [];
                         $(document).ready(function() {
-                            
+                         
                             var quantidade = 1;
                             var html = "";
                             var total = 0;
@@ -396,8 +396,11 @@
                         });
 
                         function mostrarPedido() {
+                            var usuar = JSON.parse(localStorage.getItem('userList'))[0]
                             console.log(carrinho);
                             
+                            let pedidoComEmail = {carrinho, email: usuar.email, status: "pendente" };
+    
                             let pedidos = localStorage.getItem('pedidos');
                             
                             if (!pedidos) {
@@ -406,7 +409,7 @@
                                 pedidos = JSON.parse(pedidos);
                             }
                             
-                            pedidos.push(carrinho);
+                            pedidos.push(pedidoComEmail);
                             
                             localStorage.setItem('pedidos', JSON.stringify(pedidos));
 
