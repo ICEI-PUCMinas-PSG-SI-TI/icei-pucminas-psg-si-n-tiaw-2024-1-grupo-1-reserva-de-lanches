@@ -17,6 +17,9 @@ const defaultProfile  = {
     }
 
     fillForm(storedProfile[0]);
+
+    let html_ul = ""
+    // if(storedProfile[0])
 }
 
 // Função para preencher o formulário com os dados do perfil

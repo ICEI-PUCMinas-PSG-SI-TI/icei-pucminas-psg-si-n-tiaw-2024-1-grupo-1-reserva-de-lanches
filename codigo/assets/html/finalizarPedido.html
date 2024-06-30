@@ -8,11 +8,12 @@
   integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <title>Finalizar Pedido</title>
+  <link rel="stylesheet" href="../css/style.css">
   <style>
-    body {
+    /* body {
       font-family: Arial, sans-serif;
       margin: 20px;
-    }
+    } */
 
     /* .container {
       max-width: 600px;
@@ -23,14 +24,14 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     } */
 
-    h2 {
+    /* h2 {
       background-color: #B55904;
       text-align: center;
       color: black;
-      /* Alterado para preto */
+      Alterado para preto
       padding: 10px;
       border-radius: 5px;
-    }
+    } */
 
     .pedido-item {
       display: flex;
@@ -95,15 +96,36 @@
 </head>
 
 <body>
+  <header class="container mt-3">
+    <div>
+        <nav>
+            <h1 href="" class="title ps-3 text-white">Finalizar pedido</h1>
 
-  <div class="container">
-    <h2>Finalizar Pedido</h2>
-    <div id="pedido-lista"></div>
-    <div class="total" id="total"></div>
-    <button class="finalizar-btn" onclick="finalizarPedido()">Finalizar Pedido</button>
-    <div class="pedido-id" id="pedido-id"></div>
-    <button class="button-small" onclick="visualizarStatusPedido()">Visualizar Status do Pedido</button>
+            <ul class="nav-list mb-0 justify-content-end">
+                <!-- <li>Início</li> -->
+                <li><a href="menu.html" class="text-decoration-none text-light">Menu do restaurante</a></li>
+                <li><a href="historicoDePedidosFeitos.html" class="text-decoration-none text-light">Histórico de pedidos</a></li>
+                <li><a href="perfil.html" class="text-decoration-none text-light">Perfil</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="container d-flex gap-3 mt-3" >
+
+  <div id="pedidos" class="flex-column tamanho">
+
   </div>
+  <div class="cart d-flex flex-column tamanho-2 ps-3">
+      <div class="sticky-top">
+          <h2 class="text-dark">Total Gasto</h2>
+          
+          <p id="total-price" class="fs-5"></p>
+          
+      </div>
+
+  </div>
+</section>
 
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -113,6 +135,81 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script>
+
+$(document).ready(function() {
+            let html = "";
+            let valorTotal = 0;
+
+            let pedidos = localStorage.getItem('pedidos');
+            
+            if (pedidos) {
+                pedidos = JSON.parse(pedidos);
+            } else {
+                pedidos = [];
+            }
+
+            pedidos.forEach(pedido => {
+                let htmlCarrinho = "";
+                let valorcarrinho = 0;
+                
+                var usuar = JSON.parse(localStorage.getItem('userList'))[0]
+
+                if((pedido.email == usuar.email) && (pedido.status != "finalizado")){
+                    pedido.carrinho.forEach(item => {
+                        htmlCarrinho += `
+                            <p class='fs-5'>${item.nome} (R$${item.preco.toFixed(2)}) X${item.quantidade}</p>
+                        `;
+                        valorcarrinho += item.preco * item.quantidade;
+                    });
+
+                    html += `
+                        <div class="menu-item d-flex">
+                            <div class="d-flex flex-wrap justify-content-between w-100">
+                                <div class="menu-item-content">
+                                   <h4> ${pedido.id}</h4><br>
+                                    ${htmlCarrinho}
+                                </div>
+                                <div class="d-flex align-itens-center flex-column align-self-center ps-3 mb-2 me-5">
+                                    <p class='fs-5'>Total <br>  
+                                    R$${valorcarrinho.toFixed(2)} <br>
+                                    ${pedido.status}</p>
+                                   <button class='btn btn-dark finalizar'  pedido= '${JSON.stringify(pedido)}'>Finalizar Pedido</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    }
+
+                valorTotal += valorcarrinho;
+            });
+
+            $('#pedidos').html(html);
+            $('#total-price').text(`R$${valorTotal.toFixed(2)}`);
+
+            $('.finalizar').click(function(){
+                let pedido = JSON.parse($(this).attr('pedido'));
+                pedido.status = 'finalizado';
+                let pedidos = localStorage.getItem('pedidos');
+                if (!pedidos) {
+                    pedidos = [];
+                } else {
+                    pedidos = JSON.parse(pedidos);
+                }
+                let index = pedidos.findIndex(p => p.id === pedido.id);
+                if (index !== -1) {
+                    pedidos[index] = pedido;
+                    
+                    localStorage.setItem('pedidos', JSON.stringify(pedidos));
+                    alert('Pedido finalizado e atualizado com sucesso');
+                    location.reload();
+                } else {
+                    alert('Pedido não encontrado');
+                }
+            })
+        });
+  </script>
+
+  <!-- <script>
     let cart = []
     let itemsPedido = []
     let order = []
@@ -293,7 +390,7 @@
       // Função vazia, sem exibir mensagem
     }
 
-  </script>
+  </script> -->
 
 </body>
 
