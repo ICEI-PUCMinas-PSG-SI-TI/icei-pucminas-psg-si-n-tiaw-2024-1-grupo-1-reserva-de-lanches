@@ -53,13 +53,10 @@ function saveProfile() {
     let indice = parseInt(document.querySelector('#profile-form').getAttribute("data-id"));
     let Profile = JSON.parse(localStorage.getItem('userList'));
     
-    Profile[indice] = {
-        firstName: document.getElementById('name').value,
-        lastName: document.getElementById('shift').value,
-        email: document.getElementById('email').value,
-        password: Profile.password,
-        enrollment: document.getElementById('person-id').value
-    };
+    Profile[indice].email = document.getElementById('email').value;
+    Profile[indice].enrollment = document.getElementById('person-id').value;
+    Profile[indice].firstName =  document.getElementById('name').value;
+    Profile[indice].lastName = document.getElementById('shift').value;
   
     localStorage.setItem('userList', JSON.stringify(Profile));
 
