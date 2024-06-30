@@ -338,3 +338,8 @@ function AdicionarEventos() {
     }
   );
 }
+
+function logOff() {
+  sessionStorage.removeItem('loggedInUser');
+  window.open("../../index.html", '_self');
+}

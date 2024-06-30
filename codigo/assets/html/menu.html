@@ -24,16 +24,13 @@
                     <li><a href="historicoDePedidosFeitos.html" class="text-decoration-none text-light">Histórico de pedidos</a></li>
                     <li><a href="finalizarPedido.html" class="text-decoration-none text-light">Finalizar pedidos</a></li>
                     <li><a href="perfil.html" class="text-decoration-none text-light">Perfil</a></li>
+                    <li class="text-decoration-none text-light" onclick="logOff()">Sair</li>
                 </ul>
             </nav>
         </div>
     </header>
     <div class="container mt-3">
      
-
-      
-       
-
         <!-- Itens do menu -->
         <div id="menu-items" class="d-flex mb-5">
             <div class="itens d-flex flex-column tamanho">
@@ -306,7 +303,6 @@
                         }
                     } 
                     
-
                 });
                 carrinho.forEach((compra, index)=>{
                     html += `<div class='shadow p-2 mb-1 bg-white rounded d-flex align-items-center text-center'>
@@ -427,6 +423,11 @@
                     cat.style.display = 'none';
                 }
             });
+        }
+
+        function logOff() {
+            sessionStorage.removeItem('loggedInUser');
+            window.open("../../index.html", '_self');
         }
 
     </script>

@@ -263,3 +263,8 @@ function getProductIndex(id) {
 
     return -1;
 }
+
+function logOff() {
+    sessionStorage.removeItem('loggedInUser');
+    window.open("../../index.html", '_self');
+}

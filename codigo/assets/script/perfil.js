@@ -70,5 +70,9 @@ document.querySelectorAll('input').forEach(input => {
     input.addEventListener('change', saveProfile);
 });
 
+function logOff() {
+    sessionStorage.removeItem('loggedInUser');
+    window.open("../../index.html", '_self');
+}
 
 window.addEventListener('load', loadProfile);

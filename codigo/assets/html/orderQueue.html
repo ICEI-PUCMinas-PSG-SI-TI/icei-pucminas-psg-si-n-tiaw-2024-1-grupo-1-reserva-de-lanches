@@ -22,7 +22,8 @@
                     <!-- <li>Início</li> -->
                     <li><a href="cadastroDeProdutos.html" class="text-decoration-none text-light">Controle de Produtos</a></li>
                     <li><a href="gestao.html" class="text-decoration-none text-light">Gestão</a></li>
-                   
+                    <li class="text-decoration-none text-light" onclick="logOff()">Sair</li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -133,6 +134,11 @@
         function atualizarDados() {
             window.open("orderQueue.html", '_self');
         }
+
+        function logOff() {
+            sessionStorage.removeItem('loggedInUser');
+            window.open("../../index.html", '_self');
+        }  
     </script>
 </body>
 

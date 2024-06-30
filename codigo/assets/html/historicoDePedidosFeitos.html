@@ -22,6 +22,7 @@
                     <li><a href="menu.html" class="text-decoration-none text-light">Menu do restaurante</a></li>
                     <li><a href="finalizarPedido.html" class="text-decoration-none text-light">Finalizar pedidos</a></li>
                     <li><a href="perfil.html" class="text-decoration-none text-light">Perfil</a></li>
+                    <li class="text-decoration-none text-light" onclick="logOff()">Sair</li>
                 </ul>
             </nav>
         </div>
@@ -111,6 +112,11 @@
             window.open('historicoDePedidosFeitos.html', '_self');
         }
 
+        function logOff() {
+            sessionStorage.removeItem('loggedInUser');
+            window.open("../../index.html", '_self');
+        }
+        
     </script>
 </body>
 </html>
