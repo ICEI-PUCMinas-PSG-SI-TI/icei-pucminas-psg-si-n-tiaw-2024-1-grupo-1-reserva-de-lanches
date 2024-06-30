@@ -395,12 +395,18 @@
                             
                         });
 
+                        function gerarIdUnico() {
+                            return 'pedido-' + Date.now();
+                        }
+
                         function mostrarPedido() {
-                            var usuar = JSON.parse(localStorage.getItem('userList'))[0]
+                            var usuar = JSON.parse(localStorage.getItem('userList'))[0];
                             console.log(carrinho);
                             
-                            let pedidoComEmail = {carrinho, email: usuar.email, status: "pendente" };
-    
+                            let pedidoId = gerarIdUnico();
+
+                            let pedidoComEmail = { id: pedidoId, carrinho: carrinho, email: usuar.email, status: "pendente" };
+                            
                             let pedidos = localStorage.getItem('pedidos');
                             
                             if (!pedidos) {
@@ -413,7 +419,7 @@
                             
                             localStorage.setItem('pedidos', JSON.stringify(pedidos));
 
-                            alert('pedido adicionado ao histórico')
+                            alert('Pedido adicionado ao histórico');
                         }
 
                         // Função para filtrar os itens por categoria

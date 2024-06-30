@@ -70,6 +70,7 @@
                 let htmlCarrinho = "";
                 let valorcarrinho = 0;
 
+               if(pedido.status == "pendente"){
                 pedido.carrinho.forEach(item => {
                     htmlCarrinho += `
                         <p class='fs-5'>${item.nome} (R$${item.preco.toFixed(2)}) X${item.quantidade}</p>
@@ -82,22 +83,51 @@
                         <div class="d-flex  justify-content-between w-100 p-2">
                             
                             <div class="menu-item-content">
-                                <p class="fs-5 fw-bolder">${pedido.email}</p><br>
+                                <p class="fs-3 fw-bolder">${pedido.email}</p><br>
                                 ${htmlCarrinho}
                             </div>
                             <div class="d-flex flex-column align-itens-center align-self-center ps-3 mb-2 me-5">
                                 <p class='fs-5'>Total <br>  
                                 R$${valorcarrinho.toFixed(2)}</p>
-                                <button class='btn btn-dark' >Aprovar Pedido</button>
+                                <button class='btn btn-dark aprovar'  pedido= '${JSON.stringify(pedido)}'>Aprovar Pedido</button>
                             </div>
                         </div>
                     </div>
                 `;
+               }
 
                 
             });
 
             $('.content').html(html);
+
+            $('.aprovar').click(function() {
+                let pedido = JSON.parse($(this).attr('pedido'));
+
+                pedido.status = 'aprovado';
+
+                let pedidos = localStorage.getItem('pedidos');
+
+                if (!pedidos) {
+                    pedidos = [];
+                } else {
+                    pedidos = JSON.parse(pedidos);
+                }
+
+                let index = pedidos.findIndex(p => p.id === pedido.id);
+
+                if (index !== -1) {
+                    pedidos[index] = pedido;
+                    
+                    localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+                    alert('Pedido aprovado e atualizado com sucesso');
+
+                    location.reload();
+                } else {
+                    alert('Pedido não encontrado');
+                }
+            });
        })
            
     </script>
