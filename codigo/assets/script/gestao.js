@@ -1,20 +1,20 @@
 
 // Estrutura dos pedidos:
 // pedidos:  [ 
-//   { id: 112232,
-//     usuario: 171,
-//     produtos: [
-//                { id: 1, quantidade: 2, descricao: "xxxx", preco: xxx.xx },
-//                { id: 3, quantidade: 1, descricao: "xxxx", preco: xxx.xx },
+//   { id: 112232,              // milisegundos após 01/01/1070 00:00:00 UTC
+//     email: xxx@xxx.xxxx,     // e-mail do usuário
+//     status: pendente,        // pendente, aprovado, finalizado
+//     carrinho: [
+//                { nome: xxxxx , preco: xxx.xx, quantidade: xx },
+//                { nome: xxxxx , preco: xxx.xx, quantidade: xx },
 //                ... ],
-//     valorTotal: xxx.xx,
-//     data: xxxxxxxxxxxx, // TimeStamp da data do pedido
-//     status: xxxx,
 //   },
 //   { ... },
 //   { ... },
 //   { ... }
 //   ]
+
+// STATUS: pendente, aprovado, finalizado
 
 // Data atual representada em TimeStamp com horário de 23hr59m59s
 let DATA_ATUAL = new Date();
@@ -31,7 +31,7 @@ pedidos = JSON.parse(localStorage.getItem('pedidos'));
 
 if (!pedidos) {
   pedidos = pedidos_mock;
-  localStorage.setItem('dbProdutos', JSON.stringify(pedidos));
+  localStorage.setItem('pedidos', JSON.stringify(pedidos));
 }
 
 // Faturamento dos últimos 30 dias, que será calculado com base nos
@@ -67,11 +67,15 @@ function initPage() {
   CalcularMaisVendidos(30, mais_vendidos_30);
   
   AtualizarPedidos();
+  setInterval(AtualizarPedidos, 5000);
+  
   AtualizarFaturamento(7);
   AtualizarMaisVendidos(mais_vendidos_7);
   
   loadChart(7);
   AdicionarEventos();
+
+  setTimeout(initPage, 30000);
 }
 
 function CalcularDatasFaturamento() {
@@ -89,12 +93,14 @@ function CalcularFaturamento() {
   for (let i = 0; i < pedidos.length; i++) {
     let p = pedidos[i];
 
-    if (DATA_ATUAL >= p.data && p.status != "Cancelado") {
-      let indice = Math.trunc((DATA_ATUAL - p.data) / UM_DIA);
+    if (DATA_ATUAL >= p.id && p.status != "cancelado") {
+      let indice = Math.trunc((DATA_ATUAL - p.id) / UM_DIA);
 
       if (indice >= 0 && indice < 30)
       {
-        faturamento[indice] += p.valorTotal;
+        p.carrinho.forEach( (item) => {
+          faturamento[indice] += parseFloat(item.preco) * parseFloat(item.quantidade);
+        })
       }
     }
   }
@@ -104,18 +110,18 @@ function CalcularMaisVendidos(dias, vetor) {
   let aux = [];
 
   for (let i = 0; i < pedidos.length; i++) {
-    let data = pedidos[i].data;
+    let data = pedidos[i].id;
 
     // Cria um objeto com as propriedades correspondendo à "descricao"
     // dos  produtos mais vendidos dos últimos "dias"
     if (data >= (DATA_ATUAL - dias*UM_DIA) && data <= DATA_ATUAL) {
-      let prod = pedidos[i].produtos;
+      let items = pedidos[i].carrinho;
 
-      for (let j = 0; j < prod.length; j++) {
-        if (!aux[prod[j].descricao]) {
-          aux[prod[j].descricao] = prod[j].quantidade;
+      for (let j = 0; j < items.length; j++) {
+        if (!aux[items[j].nome]) {
+          aux[items[j].nome] = items[j].quantidade;
         } else {
-          aux[prod[j].descricao] += prod[j].quantidade;
+          aux[items[j].nome] += items[j].quantidade;
         }
       }
     }
@@ -130,38 +136,24 @@ function CalcularMaisVendidos(dias, vetor) {
   vetor.sort( (a, b) =>  b.quantidade - a.quantidade );
 }
 
-function AtualizarPedidos(tipo) {
+function AtualizarPedidos() {
+  // Recarrega os pedidos para atualizar a lista de pendentes
+  pedidos = JSON.parse(localStorage.getItem('pedidos'));
+
   let div = document.querySelector('#pedidos');
   let strHTML = '';
 
   for (let i = 0; i < pedidos.length; i++) {
     let p = pedidos[i];
-    let d = new Date(p.data);
     let pendentes = document.getElementById("pedidos-pendentes").checked;
     let andamento = document.getElementById("pedidos-em-andamento").checked
     
-    if (p.status == 'Pendente' && pendentes) {
-      strHTML += `<span class="text-pendente">` +
-                `#${p.id.toString().substring(4)} ` +
-                `${d.getDate().toString().padStart(2, '0')}/` +
-                `${(d.getMonth()+1).toString().padStart(2, '0')}/` +
-                `${d.getFullYear().toString().substring(2)}` + ' ' +
-                `${d.getHours().toString().padStart(2, '0')}` + ':' +
-                `${d.getMinutes().toString().padStart(2, '0')}` + ':' +
-                `${d.getSeconds().toString().padStart(2, '0')}` +
-                `</span>`;
+    if (p.status == 'pendente' && pendentes) {
+      strHTML += `<span class="text-pendente">#${p.id}</span>`;
     }
     
-    if (p.status == 'Em andamento' && andamento) {
-      strHTML += `<span class="text-em-andamento">` +
-                 `#${p.id.toString().substring(4)} ` +
-                 `${d.getDate().toString().padStart(2, '0')}/` +
-                 `${(d.getMonth()+1).toString().padStart(2, '0')}/` +
-                 `${d.getFullYear().toString().substring(2)}` + ' ' +
-                 `${d.getHours().toString().padStart(2, '0')}` + ':' +
-                 `${d.getMinutes().toString().padStart(2, '0')}` + ':' +
-                 `${d.getSeconds().toString().padStart(2, '0')}` +
-                 `</span>`;
+    if (p.status == 'em andamento' && andamento) {
+      strHTML += `<span class="text-em-andamento">#${p.id}</span>`;
     }
   }
 
