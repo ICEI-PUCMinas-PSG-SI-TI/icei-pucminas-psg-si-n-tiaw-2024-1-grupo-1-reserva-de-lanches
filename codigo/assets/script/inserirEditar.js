@@ -4,6 +4,8 @@ let productID = parseInt(urlParams.get('id'));
 
 function initInsertPage() {
 
+    document.querySelector('#tituloNavBar').innerText = 'Cadastrar Produto';
+
     if (productID) {
         loadProduct(productID);
     }
@@ -31,11 +33,11 @@ function loadEvents() {
 function loadProduct(productID) {
     let dbProdutos = JSON.parse(localStorage.getItem('dbProdutos'));
 
+    document.querySelector('#tituloNavBar').innerText = 'Editar Produto';
+
     for (let i = 0; i < dbProdutos.items.length; i++) {
 
         if (productID == dbProdutos.items[i].id) {
-            
-            // document.querySelector('#cadastrar').innerText = 'Editar Produto';
 
             document.querySelector('#editProduct img').src = dbProdutos.items[i].img;
             document.querySelector('#editProduct img').setAttribute('alt', dbProdutos.items[i].descricao);
