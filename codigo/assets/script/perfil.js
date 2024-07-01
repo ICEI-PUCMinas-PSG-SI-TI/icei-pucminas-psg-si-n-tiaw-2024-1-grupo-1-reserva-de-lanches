@@ -49,7 +49,6 @@ function editProfile() {
 }
 
 function saveProfile() {
-    
     let indice = parseInt(document.querySelector('#profile-form').getAttribute("data-id"));
     let Profile = JSON.parse(localStorage.getItem('userList'));
     
@@ -58,21 +57,44 @@ function saveProfile() {
     Profile[indice].firstName =  document.getElementById('name').value;
     Profile[indice].lastName = document.getElementById('shift').value;
   
-    localStorage.setItem('userList', JSON.stringify(Profile));
-
-    alert('Perfil salvo com sucesso!');
+    // Atualiza os dados do usuário logado, a lista de usuários e
+    // o histórico de pedidos caso o e-mail tenha sido alterado
+    let usuar = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    if (usuar.email != Profile[indice].email) {
+        updateOrderHistory(usuar.email, Profile[indice].email);
+        updateLoggedUser(Profile[indice].email);
+    }
 
     document.querySelectorAll('input').forEach(input => {
         input.setAttribute('readonly', true);
     });
     document.getElementById('edit-button').style.display = 'inline-block';
     document.getElementById('save-button').style.display = 'none';
+    localStorage.setItem('userList', JSON.stringify(Profile));
+    alert('Perfil salvo com sucesso!');
 }
 
+function updateOrderHistory(oldEmail, newEmail) {
+    pedidos = JSON.parse(localStorage.getItem('pedidos'));
+    if (pedidos) {
+        pedidos.forEach( p => {
+            if (p.email == oldEmail) {
+                p.email = newEmail;
+            }
+        });
+        localStorage.setItem('pedidos', JSON.stringify(pedidos));
+    }
+}
 
-document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('change', saveProfile);
-});
+function updateLoggedUser(email) {
+    let loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+    loggedInUser.email = email;
+    sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+}
+
+// document.querySelectorAll('input').forEach(input => {
+//     input.addEventListener('change', saveProfile);
+// });
 
 function logOff() {
     sessionStorage.removeItem('loggedInUser');
