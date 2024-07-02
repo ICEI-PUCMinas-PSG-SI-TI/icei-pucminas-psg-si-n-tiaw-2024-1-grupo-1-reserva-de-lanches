@@ -160,7 +160,7 @@ $(document).ready(function() {
                 if((pedido.email == usuar.email) && (pedido.status != "finalizado")) {
                     pedido.carrinho.forEach(item => {
                         htmlCarrinho += `
-                            <p class='fs-5'>${item.nome} (R$${item.preco.toFixed(2)}) X ${item.quantidade}</p>
+                            <p class='fs-5'>${item.nome} (R$${item.preco.toFixed(2)}) x ${item.quantidade}</p>
                         `;
                         valorcarrinho += item.preco * item.quantidade;
                     });
